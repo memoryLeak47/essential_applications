@@ -3,7 +3,6 @@
 
 req "javac"
 req "java"
-req "$editor"
 
 clear
 
@@ -17,7 +16,7 @@ if [ a$1 == 'a-n' ] || [ ! -f "$srcfile" ]; then
 fi
 
 if [ ! a$1 == 'a-r' ]; then
-	$editor $srcfile
+	vim $srcfile
 	javac $srcfile
 fi
 

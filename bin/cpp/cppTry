@@ -2,7 +2,6 @@
 # cppTry v0
 
 req "g++"
-req "$editor"
 
 clear
 
@@ -10,7 +9,7 @@ if [ a$1 == 'a-n' ]; then
 	echo -e "#include <iostream>\n#define con(x) std::cout << x << std::endl\n\nint main()\n{\n\treturn 0;\n}" >  $tmpdir/CppTry.cpp
 fi
 if [ ! a$1 == 'a-r' ]; then
-	$editor $tmpdir/CppTry.cpp
+	vim $tmpdir/CppTry.cpp
 fi
 g++ -O2 -g -Wall -c $tmpdir/CppTry.cpp -o $tmpdir/CppTry.o
 if [ -f $tmpdir/CppTry.o ]; then

@@ -4,10 +4,7 @@
 export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/git/bin'
 for dir in $(find ~/bin -type d)
 do
-	PATH=$PATH:$dir
+	export PATH=$PATH:$dir
 done
 
 export tmpdir="/local"
-if [ ! -d $tmpdir ]; then
-	mkdir "$tmpdir"
-fi
