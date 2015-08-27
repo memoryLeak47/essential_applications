@@ -1,0 +1,34 @@
+#!/bin/bash
+# javaRun v1
+
+req "cat"
+req "java"
+
+error="Usage: javaRun [-p path] [args]"
+mp=
+
+if [ a$1 == a"-p" ]; then
+	if [ -z $2 ]; then
+		echo "$error"
+		exit
+	fi
+	mp="$2"
+	shift 2
+else
+	if [ ! -f ".mainpath" ]; then
+		echo "cannot find .mainpath"
+		exit
+	fi
+	mp=$(cat ".mainpath")
+fi
+
+if [ ! -d "bin" ]; then
+	echo "theres no bin directory...";
+	exit
+fi
+
+if [ ! -d "res" ]; then
+	echo "theres no res directory...";
+	exit
+fi
+java -cp "bin:res" $mp $@

@@ -1,0 +1,21 @@
+#!/bin/bash
+# req v1
+
+usage="Usage: req [-v] <command>"
+
+if [ $# == 1 ]; then
+	cmd="$1"	
+elif [ $# == 2 ] && [ "a$1" == 'a-v' ]; then
+	mode='-v'
+	cmd="$2"
+else
+	echo $usage
+	exit
+fi
+
+if [ "a"$(type -t $cmd) != "a" ]; then
+	[ "a$mode" == 'a-v' ] && type $cmd
+else	
+	echo "$cmd has to be installed for this service. Terminating..."
+	kill -INT $$ # return all funcs
+fi

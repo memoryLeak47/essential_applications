@@ -1,0 +1,23 @@
+#!/bin/bash
+# cTry v0
+
+req "gcc"
+req "$editor"
+
+clear
+
+if [ a$1 == 'a-n' ]; then
+	echo -e "\n\nint main()\n{\n\treturn 0;\n}" >  $tmpdir/CTry.c
+fi
+if [ ! a$1 == 'a-r' ]; then
+	$editor $tmpdir/CTry.c
+fi
+gcc -O2 -g -Wall -c $tmpdir/CTry.c -o $tmpdir/CTry.o
+if [ -f $tmpdir/CTry.o ]; then
+	gcc $tmpdir/CTry.o -o $tmpdir/CTry -lsfml-window -lsfml-system -lsfml-graphics
+	rm $tmpdir/CTry.o
+fi
+if [ -f $tmpdir/CTry ]; then
+	$tmpdir/CTry
+	rm $tmpdir/CTry
+fi

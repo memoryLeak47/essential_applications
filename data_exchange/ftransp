@@ -1,0 +1,55 @@
+#!/usr/bin/env python
+#  ftransp v6
+
+import sys
+import socket
+
+port = 5000
+
+def send():
+	filename = sys.argv[2]
+	IP = sys.argv[3]
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	try:
+		s.connect((IP, port))
+	except Exception, e:
+		print("Can't connect to " + IP)
+		sys.exit()
+	opened = open(filename)
+	lines = opened.readlines()
+	data = "" 
+	for line in lines:
+		data += line
+	s.send(data)
+	opened.close()
+	s.close()
+
+def recv():
+	filename = sys.argv[2]
+	ss = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	ss.bind(("0.0.0.0", port))
+	ss.listen(1)
+	(s, addr) = ss.accept()
+	tmp_data = "none"
+	recvfile = ""
+	while tmp_data:
+		tmp_data = s.recv(2000)
+		recvfile += tmp_data
+	opened = open(filename, "w")
+	opened.write(recvfile)
+	opened.close()
+	s.close()
+	ss.close()
+
+def err():
+	print "Usage: ftransp [s <in> <IP>]/[r <out>]"
+	sys.exit(0)
+
+if len(sys.argv) == 4 and sys.argv[1] == "s":
+	send()
+
+elif len(sys.argv) == 3 and sys.argv[1] == "r":
+	recv()
+
+else:
+	err()

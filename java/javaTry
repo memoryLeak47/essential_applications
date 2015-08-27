@@ -1,0 +1,29 @@
+#!/bin/bash
+# javaTry v0
+
+req "javac"
+req "java"
+req "$editor"
+
+clear
+
+filename="JavaTry"
+srcfile="$tmpdir/JavaTry.java"
+binfile="$tmpdir/JavaTry.class"
+dir="$tmpdir"
+
+if [ a$1 == 'a-n' ] || [ ! -f "$srcfile" ]; then
+	echo -e "class JavaTry\n{\n\tstatic public void main(String args[])\n\t{\n\t\t\n\t}\n}" > "$srcfile"
+fi
+
+if [ ! a$1 == 'a-r' ]; then
+	$editor $srcfile
+	javac $srcfile
+fi
+
+if [ -f $binfile ]; then
+	java -cp $dir $filename
+else
+	echo "no $binfile file"
+fi
+rm $dir/*.class &>/dev/null

@@ -1,0 +1,20 @@
+#!/bin/bash
+# javaCompile v1
+
+req "javac"
+req "xargs"
+
+clear
+
+if [ ! -d "src" ]; then
+	echo "theres no src directory...";
+	exit
+fi
+
+if [ ! -d "bin" ]; then
+	echo "creating bin directory..."
+	mkdir bin
+else
+	rm -r bin/* 2>/dev/null
+fi
+find "src" -name "*.java" | xargs javac -d "bin" -sourcepath "src"

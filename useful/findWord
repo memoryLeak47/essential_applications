@@ -1,0 +1,26 @@
+#!/bin/bash
+# findWord v0
+
+req "grep"
+
+usage="Usage: findWord <word> [<files>]"
+
+if [ -z "$1" ]; then
+	echo $usage
+	exit
+fi
+
+word="$1"
+shift
+
+if [ -n "$1" ]; then
+	if [ -f "$1" ]; then
+		grep "$word" --with-filename -n $@ --color=always
+	elif [ -d "$1" ]; then
+		grep "$word" -r --with-filename -n $1/* --color=always
+	else
+		echo "can't find '$1'."
+	fi
+else
+	grep "$word" -r --with-filename -n ./* --color=always
+fi

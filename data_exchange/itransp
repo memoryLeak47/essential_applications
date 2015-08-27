@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+# itransp v1
+
+import sys
+import socket
+
+port = 5000
+
+def send():
+	IP = sys.argv[3]
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	try:
+		s.connect((IP, port))
+	except Exception, e:
+		print("Can't connect to " + IP)
+		sys.exit()
+	s.send(sys.argv[2])
+	s.close()
+
+def recv():
+	ss = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	ss.bind(("0.0.0.0", port))
+	ss.listen(1)
+	(s, addr) = ss.accept()
+	tmp_data = "none"
+	while tmp_data:
+		tmp_data = s.recv(2000)
+		sys.stdout.write(tmp_data)
+	print
+	s.close()
+	ss.close()
+
+def err():
+	print "Usage: itransp [s <text> <IP>]/[r]"
+	sys.exit(0)
+
+if len(sys.argv) == 4 and sys.argv[1] == "s":
+	send()
+
+elif len(sys.argv) == 2 and sys.argv[1] == "r":
+	recv()
+
+else:
+	err()
