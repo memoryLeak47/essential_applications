@@ -1,4 +1,10 @@
 #!/bin/bash
 
 mv bin ~
-mv bashrc ~/.profile
+mv essential_apps ~/.essential_apps
+echo "source ~/.essential_apps" >> ~/.profile
+chmod +x ~/.essential_apps
+source ~/.essential_apps
+sudo mkdir $tmpdir
+sudo chown $USER $tmpdir
+sudo chmod +w $tmpdir
