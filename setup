@@ -1,10 +1,4 @@
 #!/bin/bash
 
-if [ -z "$1" ]; then
-	echo "usage: setup <path of git repo>"
-fi
-
-mkdir ~/bin
-mv "$1" ~/bin
-
-mv "$1"/.bashrc ~
+mv bin ~
+mv .bashrc ~
