@@ -1,5 +1,5 @@
 #!/bin/bash
-# .load_essential_applications
+# load v4
 
 export tmpdir="~/.essential_applications/tmp"
 export resdir="~/.essential_applications/res"

@@ -3,6 +3,5 @@
 mkdir ~/.essential_applications
 cp -r bin ~/.essential_applications/
 cp -r res ~/.essential_applications/
-cp load_essential_applications ~/.load_essential_applications
-chmod +x ~/.load_essential_applications
-. ~/.load_essential_applications
+cp load ~/.essential_applications/
+. ~/.essential_applications/load

@@ -1,5 +1,5 @@
 #!/bin/bash
 
-rm -r ~/.essential_applications/bin ~/.essential_applications/res &>/dev/null
+rm -r ~/.essential_applications/bin ~/.essential_applications/res
 cp -r bin ~/.essential_applications/
 cp -r res ~/.essential_applications/
