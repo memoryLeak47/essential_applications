@@ -5,6 +5,14 @@ export tmpdir="~/.essential_applications/tmp"
 export resdir="~/.essential_applications/res"
 export bindir="~/.essential_applications/bin"
 
+if [ ! -e "~/.essential_applications/bin" ]; then
+	mkdir ~/.essential_applications/bin
+fi
+
+if [ ! -e "~/.essential_applications/localbin" ]; then
+	mkdir ~/.essential_applications/localbin
+fi
+
 export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/git/bin'
 for dir in $(find ~/.essential_applications/bin -type d)
 do
