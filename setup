@@ -1,0 +1,11 @@
+#!/bin/bash
+
+mkdir ~/.essential_applications
+./update
+cp load_essential_applications ~/.load_essential_applications
+chmod +x ~/.load_essential_applications
+source ~/.load_essential_applications
+mkdir $tmpdir
+mkdir $bindir
+mkdir $localbindir
+mkdir $resdir

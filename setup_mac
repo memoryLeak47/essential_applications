@@ -1,9 +1,0 @@
-#!/bin/bash
-
-mkdir ~/.essential_applications
-./update
-mv load_essential_applicationss ~/.load_essential_applicationss
-echo ". ~/.load_essential_applicationss" >> ~/.profile
-chmod +x ~/.load_essential_applicationss
-source ~/.load_essential_applications
-mkdir $tmpdir
