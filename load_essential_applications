@@ -1,12 +1,18 @@
 #!/bin/bash
 # .load_essential_applications
 
+export tmpdir="~/.essential_applications/tmp"
+export resdir="~/.essential_applications/res"
+export bindir="~/.essential_applications/bin"
+
 export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/git/bin'
-for dir in $(find ~/bin -type d)
+for dir in $(find ~/.essential_applications/bin -type d)
 do
 	export PATH=$PATH:$dir
 done
 
-export tmpdir="~/.essential_applications/tmp"
-export resdir="~/.essential_applications/res"
-export bindir="~/.essential_applications/bin"
+for dir in $(find ~/.essential_applications/localbin -type d)
+do
+	export PATH=$PATH:$dir
+done
+
