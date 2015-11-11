@@ -1,10 +1,10 @@
 #!/bin/bash
 
 mv bin ~
-mv essential_apps ~/.essential_apps
-echo "source ~/.essential_apps" >> ~/.bashrc
-chmod +x ~/.essential_apps
-source ~/.essential_apps
+mv load_essential_apps ~/.load_essential_apps
+echo "source ~/.load_essential_apps" >> ~/.bashrc
+chmod +x ~/.load_essential_apps
+source ~/.load_essential_apps
 sudo mkdir $tmpdir
 sudo chown $USER $tmpdir
 sudo chmod +w $tmpdir
