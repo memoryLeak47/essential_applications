@@ -1,11 +1,8 @@
 #!/bin/bash
 
 mkdir ~/.essential_applications
-./update
+cp -r bin ~/.essential_applications/
+cp -r res ~/.essential_applications/
 cp load_essential_applications ~/.load_essential_applications
 chmod +x ~/.load_essential_applications
-source ~/.load_essential_applications
-mkdir $tmpdir
-mkdir $bindir
-mkdir $localbindir
-mkdir $resdir
+. ~/.load_essential_applications
