@@ -1,0 +1,80 @@
+#Nav1(Mod3)
+
+"xte 'key Left'"
+   mod3+w+Release
+
+"xte 'key Down'"
+   mod3+e+Release
+
+"xte 'key Up'"
+   mod3+r+Release
+
+"xte 'key Right'"
+   mod3+t+Release
+
+"xte 'key BackSpace'"
+   mod3+a+Release
+
+"xte 'key Delete'"
+   mod3+s+Release
+
+"xte 'key Super_L'"
+  mod3+d+Release
+
+"xte 'key Escape'"
+   mod3+f+Release
+
+"xte 'key Return'"
+   mod3+g+Release
+
+"xte 'key Tab'"
+   mod3+h+Release
+
+#Nav2(Mod3+Mod5) - Alt-Tab Switch-Window
+
+#Mouse(Mod3+Shift) - 
+
+"xte 'mousermove -5 0'"
+  mod3+shift+w+Release
+
+"xte 'mousermove 0 5'"
+  mod3+shift+e+Release
+
+"xte 'mousermove 0 -5'"
+  mod3+shift+r+Release
+
+"xte 'mousermove 5 0'"
+  mod3+shift+t+Release
+
+"xte 'mousermove -10 0'"
+  mod3+shift+s+Release
+
+"xte 'mousermove 0 10'"
+  mod3+shift+d+Release
+
+"xte 'mousermove 0 -10'"
+  mod3+shift+f+Release
+
+"xte 'mousermove 10 0'"
+  mod3+shift+g+Release
+
+"xte 'mousermove -20 0'"
+  mod3+shift+y+Release
+
+"xte 'mousermove 0 20'"
+  mod3+shift+x+Release
+
+"xte 'mousermove 0 -20'"
+  mod3+shift+c+Release
+
+"xte 'mousermove 20 0'"
+  mod3+shift+v+Release
+
+"sleep 0.2 && xte 'mouseclick 1 &'"
+  mod3+shift+z
+
+"sleep 0.2 && xte 'mouseclick 2 &'"
+  mod3+shift+h
+
+"sleep 0.2 && xte 'mouseclick 3 &'"
+  mod3+shift+b

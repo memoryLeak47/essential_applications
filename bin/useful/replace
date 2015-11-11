@@ -1,0 +1,9 @@
+#!/bin/bash
+
+usage="usage:\treplace <pattern> <substitution>"
+if [ -z "$1" ] || [ -z "$2" ]; then
+	echo -e "$usage"
+	exit
+fi
+
+sed "s/$1/$2/g" -i $(find -type f)

@@ -1,0 +1,10 @@
+#!/bin/bash
+# op v1
+
+req "xargs"
+req "vim"
+
+results=$(find -name "$1")
+numres=$(echo "$results" | wc -l)
+
+vim $results

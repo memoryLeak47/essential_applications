@@ -1,9 +1,9 @@
 #!/bin/bash
-# findWord v0
+# findword v0
 
 req "grep"
 
-usage="Usage: findWord <word> [<files>]"
+usage="Usage: findword <word> [<files>]"
 
 if [ -z "$1" ]; then
 	echo $usage

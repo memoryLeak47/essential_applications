@@ -1,0 +1,20 @@
+#!/bin/bash
+# jpackage-man v0
+
+if [ ! -d "src" ]; then
+	echo "You have to be in project-root. src not found"
+	exit
+fi
+
+cd src
+
+files=$(find -name "*.java")
+
+for file in $files
+do
+	package_path=$(sed -e 's/\//\./g' <<< "$file")
+	package_path=${package_path#'..'}
+	package_path=${package_path%".$(basename $file)"}
+	package_path=${package_path%'.java'}
+	sed "s/^package .*/package $package_path;/g" -i $file
+done

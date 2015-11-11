@@ -1,0 +1,20 @@
+#!/bin/bash
+# … v0
+
+req "itransp"
+
+usage="$0 <IP>"
+
+if [ -z "$1" ]; then
+	echo $usage
+	exit
+fi
+
+ip="$1"
+
+while [ 1 == 1 ];
+do
+	echo "${ip}: $(itransp r &)"
+	read msg
+	itransp s ${msg} ${ip}
+done

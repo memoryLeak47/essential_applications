@@ -1,0 +1,36 @@
+keycode  24 = q Q                       1 1                             BackSpace BackSpace
+keycode  25 = w W                       2 2                             Delete Delete
+keycode  26 = e E                       3 3                             Escape Escape
+keycode  27 = r R                       4 4                             Return Return
+keycode  28 = t T                       5 5                             Tab Tab
+keycode  29 = z Z                       6 6                             z Z
+keycode  30 = u U                       7 7                             Next Next
+keycode  31 = i I                       8 8                             Prior Prior
+keycode  32 = o O                       9 9                             minus minus
+keycode  33 = p P                       0 0                             plus plus
+keycode  34 = udiaeresis Udiaeresis     dead_grave dead_grave           udiaeresis Udiaeresis
+keycode  38 = a A                       asterisk asterisk               parenleft parenleft
+keycode  39 = s S                       question question               parenright parenright
+keycode  40 = d D                       quotedbl quotedbl               braceleft braceleft
+keycode  41 = f F                       slash slash                     braceright braceright
+keycode  42 = g G                       asciitilde asciitilde           g G
+keycode  43 = h H                       underscore underscore           Left Left
+keycode  44 = j J                       equal equal                     Down Down
+keycode  45 = k K                       at at                           Up Up
+keycode  46 = l L                       dollar dollar                   Right Right
+keycode  47 = odiaeresis Odiaeresis     dead_circumflex dead_circumflex odiaeresis Odiaeresis
+keycode  48 = adiaeresis Adiaeresis     dead_acute dead_acute           adiaeresis Adiaeresis
+keycode  52 = y Y                       ampersand ampersand             bracketleft bracketleft
+keycode  53 = x X                       exclam exclam                   bracketright bracketright
+keycode  54 = c C                       apostrophe apostrophe           c C
+keycode  55 = v V                       backslash backslash             v V
+keycode  56 = b B                       b B                             b B
+keycode  57 = n N                       n N                             n N
+keycode  58 = m M                       percent percent                 m M
+
+keycode  23 = Mode_switch Mode_switch
+keycode  61 = Mode_switch Mode_switch
+
+add control = Control_R
+add control = Control_L
+

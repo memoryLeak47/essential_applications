@@ -1,5 +1,5 @@
 #!/bin/bash
-# .load_essential_apps
+# .load_essential_applications
 
 export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/git/bin'
 for dir in $(find ~/bin -type d)
@@ -7,4 +7,6 @@ do
 	export PATH=$PATH:$dir
 done
 
-export tmpdir="/local"
+export tmpdir="~/.essential_applications/tmp"
+export resdir="~/.essential_applications/res"
+export bindir="~/.essential_applications/bin"

@@ -1,0 +1,17 @@
+#!/bin/bash
+# req v1
+
+usage="Usage: installed <command>"
+
+if [ $# == 1 ]; then
+	cmd="$1"	
+else
+	echo $usage
+	exit
+fi
+
+if [ "a"$(type -t $cmd) != "a" ]; then
+	echo "yes"
+else	
+	echo "no"
+fi

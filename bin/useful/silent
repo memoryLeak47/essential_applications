@@ -1,0 +1,4 @@
+#!/bin/bash
+# silent v0
+
+$* &>/dev/null &

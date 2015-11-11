@@ -1,0 +1,47 @@
+#!/bin/bash
+# ring v0
+
+req "paplay"
+
+#ring
+#rint "blaa.wav"
+#ring "blaa.wav" in 15 min, 
+#ring at 15 h
+#ring at at 15h
+
+usage="Usage: ring [<file>] [in/at <time>]"
+song=
+when=
+
+if [ $# == 0 ]; then # no arg
+	echo "RIIING"
+	exit
+elif [ $# == 1 ]; then # song as arg
+	if [ -f "$1" ]; then
+		paplay "$1"
+	else
+		echo "Can't find file '$1'"
+	fi
+	exit
+else 
+	if [[ "$1" = "at" || "$1" = "in" ]] && [[ "$2" != "at" && "$2" != "in" ]]; then # time as arg
+		song="stdsong"
+	else # song and time as arg
+		song="$1"
+		shift
+	fi
+
+	echo "playin' $song $*"
+	#timemodifiers are $* now.
+
+	if [ "$1" = "at" ]; then
+		while $time != $2; do
+		done
+		paplay "$song"
+	elif [ "$1" = "in" ]; then
+		sleep $*
+		paplay "$song"
+	else
+		echo "$usage"
+	fi
+fi

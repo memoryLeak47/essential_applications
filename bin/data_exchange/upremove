@@ -1,0 +1,29 @@
+#!/bin/bash
+# upremove v0
+
+req "ftp"
+
+usage="Usage: upremove <file> [<path>]"
+
+if [ $# == 2 ] && [ -e "$1" ]; then
+	path="security/private/$2"
+elif [ $# == 1 ] && [ -e "$1" ]; then
+	path="security/private/"
+else
+	echo $usage
+	exit
+fi
+
+addr=lordbolbi.bplaced.net
+user=lordbolbi
+pass=Dontignoreme#66
+
+ftp -inv $addr << EOF
+user lordbolbi Dontignoreme#66
+cd $path
+delete $1
+rm $1
+close
+bye
+EOF
+echo "$1 deleted from $addr/$path"

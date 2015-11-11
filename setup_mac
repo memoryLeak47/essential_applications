@@ -1,10 +1,9 @@
 #!/bin/bash
 
-mv bin ~
-mv essential_apps ~/.essential_apps
-echo "source ~/.essential_apps" >> ~/.profile
-chmod +x ~/.essential_apps
-source ~/.essential_apps
-sudo mkdir $tmpdir
-sudo chown $USER $tmpdir
-sudo chmod +w $tmpdir
+mkdir ~/.essential_applications
+./update
+mv load_essential_applicationss ~/.load_essential_applicationss
+echo ". ~/.load_essential_applicationss" >> ~/.profile
+chmod +x ~/.load_essential_applicationss
+source ~/.load_essential_applications
+mkdir $tmpdir

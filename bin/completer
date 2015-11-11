@@ -1,0 +1,17 @@
+#!bin/bash
+# completer v0
+
+usage="usage: completer -a\n\tcompleter <binfile>"
+
+if [ -z "$1" ]; then
+	echo -e "$usage"
+	exit
+fi
+
+if [ "$1" == "sc" ] || [ "$1" == "-a" ]; then
+	complete -W "j jc jr c cc cr cpp cppc cppr" sc
+fi
+
+if [ "$1" == "cb" ] || [ "$1" == "-a" ]; then
+	complete -W "$(cd $tmpdir/cb; find)" cb 
+fi

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+~/apps/teamspeak3/ts3client_runscript.sh &>/dev/null &

@@ -1,0 +1,21 @@
+#!/bin/bash
+# paraterm v5
+
+# paraterm is used to run other applications in a new gnome-terminal which stays open after it is done
+
+n=1
+cmds="echo"
+
+while getopts ":b" OPT
+do
+	case $OPT in
+		b) blocking="--disable-factory" ;;
+	esac
+done
+
+shift $(($OPTIND -1))
+if [ -n "$1" ]; then
+	cmds="$1"
+fi
+
+gnome-terminal $blocking -e "bash -c 'source ~/.bashrc; $cmds; echo paraterm\> Done; read'"

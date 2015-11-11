@@ -1,0 +1,45 @@
+!  1: 59 = mod3
+!  2: 60 = mod5
+!  3: 61 = Mode_switch
+!  4: 62 = shift
+
+!x -> mod1
+!keycode x = Alt_L
+!
+!x -> mod3
+!remove mod4 = Hyper_L
+!add mod3 = Hyper_L
+!keycode x = Hyper_L
+!
+!x -> mod5
+!keycode x = ISO_Level3_Shift
+!
+!x -> Mode_switch
+!keycode x = Mode_switch
+
+
+remove mod4 = Hyper_L
+add mod3 = Hyper_L
+keycode 59 = Hyper_L
+keycode 60 = ISO_Level3_Shift
+keycode 61 = Mode_switch
+
+keycode 24 = q Q u U parenleft asterisk
+keycode 25 = w W i I parenright ampersand
+keycode 26 = e E o O braceleft exclam
+keycode 27 = r R p P braceright question
+keycode 28 = t T j J bracketleft equal
+keycode 29 = z Z k K bracketright
+keycode 38 = a A l L less
+keycode 39 = s S n N greater
+keycode 40 = d D m M
+keycode 41 = f F adiaeresis Adiaeresis
+keycode 42 = g G odiaeresis Odiaeresis
+keycode 43 = h H udiaeresis Udiaeresis
+keycode 52 = y Y NoSymbol NoSymbol 0 1
+keycode 53 = x X NoSymbol NoSymbol 2 3
+keycode 54 = c C NoSymbol NoSymbol 4 5
+keycode 55 = v V NoSymbol NoSymbol 6 7
+keycode 56 = b B NoSymbol NoSymbol 8 9
+
+!yxcvb --> alpha beta gamma omega ..

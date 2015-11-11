@@ -1,0 +1,6 @@
+#!/bin/bash
+# TODO v0
+
+req "$editor"
+
+$editor $tmpdir/cb/TODO

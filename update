@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rm -r ~/.essential_applications/bin ~/.essential_applications/res &>/dev/null
+mv bin ~/.essential_applications/
+mv res ~/.essential_applications/

@@ -1,0 +1,10 @@
+#!/bin/bash
+# setKeymap v1
+
+req "xmodmap"
+
+if [ -f $resdir/keymaps/$1 ]; then
+	xmodmap $resdir/keymaps/$1
+else
+	echo "can't find file: $resdir/keymaps/$1"
+fi

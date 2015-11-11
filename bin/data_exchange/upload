@@ -1,0 +1,43 @@
+#!/bin/bash
+# upload v0
+
+req "ftp"
+
+usage="Usage: upload <file> [<path>]"
+
+if [ $# == 2 ]; then
+	path="security/private/$2"
+elif [ $# == 1 ]; then
+	path="security/private"
+else
+	echo $usage
+	exit
+fi
+
+addr=lordbolbi.bplaced.net
+user=lordbolbi
+pass=Dontignoreme#66
+
+if [ -f "$1" ]; then
+	ftp -inv $addr << EOF
+user lordbolbi Dontignoreme#66
+cd $path
+put $1
+close 
+bye
+EOF
+	echo "uploaded file $1 to $addr/$path"
+elif [ -d "$1" ]; then
+	ftp -inv $addr << EOF
+user lordbolbi Dontignoreme#66
+cd $path
+mkdir $1
+close bye
+EOF
+
+	for file in $(ls "$1"); do
+		upload $1/$file $1
+	done
+else
+	echo "$1 not found."
+fi

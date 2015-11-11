@@ -1,0 +1,12 @@
+#!/bin/bash
+# setKeybind v1
+
+req "xbindkeys"
+req "killall"
+
+if [ -f $resdir/keybinds/$1 ]; then
+	killall xbindkeys
+	xbindkeys -f $resdir/keybinds/$1
+else
+	echo "can't find file: $resdir/keybinds/$1"
+fi 
