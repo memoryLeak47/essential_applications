@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 # completer v0
 
 usage="usage: completer -a\n\tcompleter <binfile>"
