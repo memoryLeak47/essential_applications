@@ -1,7 +1,7 @@
 #!/bin/bash
 # completer v0
 
-usage="usage: completer -a\n\tcompleter <binfile>"
+usage="usage:\tcompleter -a\n\tcompleter <binfile>"
 
 if [ -z "$1" ]; then
 	echo -e "$usage"
