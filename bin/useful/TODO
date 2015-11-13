@@ -3,4 +3,4 @@
 
 req "$editor"
 
-$editor $tmpdir/cb/TODO
+$editor $ul_tmpdir/cb/TODO

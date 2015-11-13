@@ -1,8 +1,0 @@
-#!/bin/bash
-
-git clone "https://github.com/memoryLeak47/essential_applications.git" $tmpdir/git
-rm -r ~/.essential_applications/bin &>/dev/null
-cp -r $tmpdir/git/bin ~/.essential_applications/bin
-rm -r ~/.essential_applications/res &>/dev/null
-cp -r $tmpdir/git/res ~/.essential_applications/res
-yes | rm -r $tmpdir/git &>/dev/null

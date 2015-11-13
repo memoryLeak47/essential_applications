@@ -1,7 +1,8 @@
 #!/bin/bash
 
-mkdir ~/.essential_applications
-cp -r bin ~/.essential_applications/
-cp -r res ~/.essential_applications/
-cp load ~/.essential_applications/
-. ~/.essential_applications/load
+. bin/ul/init-ul --only-vars
+
+mkdir $ul_root
+cp -r bin $ul_root
+cp -r res $ul_root
+. $ul_root/bin/ul/init-ul

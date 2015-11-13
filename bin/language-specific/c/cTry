@@ -7,17 +7,17 @@ req "$editor"
 clear
 
 if [ a$1 == 'a-n' ]; then
-	echo -e "\n\nint main()\n{\n\treturn 0;\n}" >  $tmpdir/CTry.c
+	echo -e "\n\nint main()\n{\n\treturn 0;\n}" >  $ul_tmpdir/CTry.c
 fi
 if [ ! a$1 == 'a-r' ]; then
-	$editor $tmpdir/CTry.c
+	$editor $ul_tmpdir/CTry.c
 fi
-gcc -O2 -g -Wall -c $tmpdir/CTry.c -o $tmpdir/CTry.o
-if [ -f $tmpdir/CTry.o ]; then
-	gcc $tmpdir/CTry.o -o $tmpdir/CTry -lsfml-window -lsfml-system -lsfml-graphics
-	rm $tmpdir/CTry.o
+gcc -O2 -g -Wall -c $ul_tmpdir/CTry.c -o $ul_tmpdir/CTry.o
+if [ -f $ul_tmpdir/CTry.o ]; then
+	gcc $ul_tmpdir/CTry.o -o $ul_tmpdir/CTry -lsfml-window -lsfml-system -lsfml-graphics
+	rm $ul_tmpdir/CTry.o
 fi
-if [ -f $tmpdir/CTry ]; then
-	$tmpdir/CTry
-	rm $tmpdir/CTry
+if [ -f $ul_tmpdir/CTry ]; then
+	$ul_tmpdir/CTry
+	rm $ul_tmpdir/CTry
 fi

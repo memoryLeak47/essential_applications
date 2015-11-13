@@ -9,8 +9,8 @@ if [ $# == 1 ]; then
 	wget "http://lordbolbi.bplaced.net/security/private/$1"
 
 elif [ $# == 2 ]; then
-	wget -O $tmpdir/downloaded "http://lordbolbi.bplaced.net/security/private/$1" # TODO may not work with folders
-	mv $tmpdir/downloaded "$2"
+	wget -O $ul_tmpdir/downloaded "http://lordbolbi.bplaced.net/security/private/$1" # TODO may not work with folders
+	mv $ul_tmpdir/downloaded "$2"
 else
 	echo $usage
 	exit

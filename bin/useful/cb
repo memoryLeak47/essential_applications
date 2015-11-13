@@ -13,39 +13,39 @@ if [ -n "$1" ]; then
 		echo -e "$usage"
 	fi
 
-	if [ ! -d "$tmpdir/cb" ]; then
-		mkdir "$tmpdir/cb"
+	if [ ! -d "$ul_tmpdir/cb" ]; then
+		mkdir "$ul_tmpdir/cb"
 	fi
 
 	if [ "$1" == "-l" ]; then
-		tree "$tmpdir/cb"
+		tree "$ul_tmpdir/cb"
 	elif [ "$1" == "-r" ]; then
 		if [ -n "$2" ]; then
-			if [ -e "$tmpdir/cb/$2" ]; then
-				rm -r "$tmpdir/cb/$2"
+			if [ -e "$ul_tmpdir/cb/$2" ]; then
+				rm -r "$ul_tmpdir/cb/$2"
 			else
-				echo "Can't find file $tmpdir/cb/$2"
+				echo "Can't find file $ul_tmpdir/cb/$2"
 			fi
 		else
 			echo -e $usage
 		fi
 	elif [ "$1" == "-d" ]; then
 		if [ -n "$2" ]; then
-			mkdir "$tmpdir/cb/$2"
+			mkdir "$ul_tmpdir/cb/$2"
 		fi
 	elif [ "$1" == "-m" ]; then
 		if [ -n "$3" ]; then
-			if [ -e "$tmpdir/cb/$2" ]; then
-				mv "$tmpdir/cb/$2" "$tmpdir/cb/$3"
+			if [ -e "$ul_tmpdir/cb/$2" ]; then
+				mv "$ul_tmpdir/cb/$2" "$ul_tmpdir/cb/$3"
 			else
-				echo "$tmpdir/cb/$2 doesn't exist"
+				echo "$ul_tmpdir/cb/$2 doesn't exist"
 			fi
 		else
 			echo -e $usage
 		fi
 	
 	else
-		$editor $tmpdir/cb/"$1"
+		$editor $ul_tmpdir/cb/"$1"
 	fi
 else
 	echo -e "$usage"

@@ -8,9 +8,9 @@ req "$editor"
 clear
 
 filename="JavaTry"
-srcfile="$tmpdir/JavaTry.java"
-binfile="$tmpdir/JavaTry.class"
-dir="$tmpdir"
+srcfile="$ul_tmpdir/JavaTry.java"
+binfile="$ul_tmpdir/JavaTry.class"
+dir="$ul_tmpdir"
 
 if [ a$1 == 'a-n' ] || [ ! -f "$srcfile" ]; then
 	echo -e "class JavaTry\n{\n\tstatic public void main(String args[])\n\t{\n\t\t\n\t}\n}" > "$srcfile"

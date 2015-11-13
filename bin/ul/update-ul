@@ -1,0 +1,9 @@
+#!/bin/bash
+# update-up v0
+
+git clone "https://github.com/memoryLeak47/utils-library.git" $ul_tmpdir/git
+rm -r $ul_bindir &>/dev/null
+cp -r $ul_tmpdir/git/bin $ul_bindir
+rm -r $ul_bindir &>/dev/null
+cp -r $ul_tmpdir/git/res $ul_resdir
+yes | rm -r $ul_tmpdir/git &>/dev/null

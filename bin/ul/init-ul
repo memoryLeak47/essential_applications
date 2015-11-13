@@ -1,0 +1,42 @@
+#!/bin/bash
+# init-ul v5
+
+export ul_root="$HOME/.utils-library"
+export ul_tmpdir="$ul_root/tmp"
+export ul_resdir="$ul_root/res"
+export ul_bindir="$ul_root/bin"
+export ul_localbindir="$ul_root/localbin"
+export ul_localresdir="$ul_root/localres"
+
+if [ ! "$1" == "--only-vars" ]; then
+	if [ ! -d "$ul_tmpdir" ]; then
+		mkdir "$ul_tmpdir"
+	fi
+
+	if [ ! -d "$ul_resdir" ]; then
+		mkdir "$ul_resdir"
+	fi
+
+	if [ ! -d "$ul_bindir" ]; then
+		mkdir "$ul_bindir"
+	fi
+
+	if [ ! -d "$ul_localbindir" ]; then
+		mkdir "$ul_localbindir"
+	fi
+
+	if [ ! -d "$ul_localresdir" ]; then
+		mkdir "$ul_localresdir"
+	fi
+
+	export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/git/bin'
+	for dir in $(find $HOME/.utils-library/bin -type d)
+	do
+		export PATH=$PATH:$dir
+	done
+
+	for dir in $(find $HOME/.utils-library/localbin -type d)
+	do
+		export PATH=$PATH:$dir
+	done
+fi

@@ -3,8 +3,8 @@
 
 err="Usage: ptransp [s <in> <IP>]/[r [<out>]]"
 
-rm $tmpdir/send.zip &>/dev/null
-rm $tmpdir/recv.zip &>/dev/null
+rm $ul_tmpdir/send.zip &>/dev/null
+rm $ul_tmpdir/recv.zip &>/dev/null
 
 if [ a$1 == as ]; then # send
 	if [ ! $# == 3 ]; then
@@ -23,25 +23,25 @@ if [ a$1 == as ]; then # send
 	zippable=$(basename $full_path)
 
 	cd $zip_root # used as workaround for wrong zip-folders
-	zip -r $tmpdir/send.zip "$zippable" >/dev/null
+	zip -r $ul_tmpdir/send.zip "$zippable" >/dev/null
 	cd $old_pwd
 
-	ftransp "s" $tmpdir/send.zip "$3"
+	ftransp "s" $ul_tmpdir/send.zip "$3"
 
 elif [ a$1 == ar ]; then # receive
 	if [ -n "$2" ] && [ ! -d "$2" ]; then
 		echo "Can't find output directory: $2"
 		exit
 	fi
-	ftransp "r" $tmpdir/recv.zip
+	ftransp "r" $ul_tmpdir/recv.zip
 	if [ -z "$2" ]; then
-		unzip $tmpdir/recv.zip >/dev/null
+		unzip $ul_tmpdir/recv.zip >/dev/null
 	else
-		unzip $tmpdir/recv.zip -d "$2" >/dev/null
+		unzip $ul_tmpdir/recv.zip -d "$2" >/dev/null
 	fi
 else
 	echo $err
 fi
 
-rm $tmpdir/send.zip &>/dev/null
-rm $tmpdir/recv.zip &>/dev/null
+rm $ul_tmpdir/send.zip &>/dev/null
+rm $ul_tmpdir/recv.zip &>/dev/null

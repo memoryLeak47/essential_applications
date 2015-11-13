@@ -3,8 +3,8 @@
 
 req "xmodmap"
 
-if [ -f $resdir/keymaps/$1 ]; then
-	xmodmap $resdir/keymaps/$1
+if [ -f $ul_resdir/keymaps/$1 ]; then
+	xmodmap $ul_resdir/keymaps/$1
 else
-	echo "can't find file: $resdir/keymaps/$1"
+	echo "can't find file: $ul_resdir/keymaps/$1"
 fi
