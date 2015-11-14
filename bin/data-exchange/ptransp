@@ -1,6 +1,6 @@
 #!/bin/bash
 
-err="Usage: ptransp [s <in> <IP>]/[r [<out>]]"
+err="Usage:\tptransp s <in> <IP>\n\tptransp r [<out>]"
 
 rm $ul_tmpdir/send.zip &>/dev/null
 rm $ul_tmpdir/recv.zip &>/dev/null

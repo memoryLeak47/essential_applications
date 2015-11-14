@@ -1,6 +1,6 @@
 #!/bin/bash
 
-usage="usage:\treplace <pattern> <substitution>"
+usage="Usage:\treplace <pattern> <substitution>"
 if [ -z "$1" ] || [ -z "$2" ]; then
 	echo -e "$usage"
 	exit

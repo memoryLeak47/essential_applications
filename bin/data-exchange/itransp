@@ -30,7 +30,7 @@ def recv():
 	ss.close()
 
 def err():
-	print "Usage: itransp [s <text> <IP>]/[r]"
+	print "Usage:\titransp s <text> <IP>\n\titransp r"
 	sys.exit(0)
 
 if len(sys.argv) == 4 and sys.argv[1] == "s":

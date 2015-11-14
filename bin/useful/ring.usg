@@ -8,7 +8,7 @@ req "paplay"
 #ring at 15 h
 #ring at at 15h
 
-usage="Usage: ring [<file>] [in/at <time>]"
+usage="Usage:\tring [<file>] [in/at <time>]"
 song=
 when=
 

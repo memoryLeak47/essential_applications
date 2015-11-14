@@ -1,6 +1,6 @@
 #!/bin/bash
 
-usage="Usage: req [-v] <command>"
+usage="Usage:\treq [-v] <command>"
 
 if [ $# == 1 ]; then
 	cmd="$1"	

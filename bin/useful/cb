@@ -5,7 +5,7 @@ req "tree"
 req "find"
 req "completer"
 
-usage="usage:\tcb -l\n\tcb -r [file]\n\tcb -d [dirname]\n\tcb [file]\n\tcb -m [file/directory] [target-position]"
+usage="Usage:\tcb -l\n\tcb -r [file]\n\tcb -d [dirname]\n\tcb [file]\n\tcb -m [file/directory] [target-position]"
 
 if [ -n "$1" ]; then
 	if [ "$1" == "--help" ]; then

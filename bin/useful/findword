@@ -2,7 +2,7 @@
 
 req "grep"
 
-usage="Usage: findword <word> [<files>]"
+usage="Usage:\tfindword <word> [<files>]"
 
 if [ -z "$1" ]; then
 	echo $usage
