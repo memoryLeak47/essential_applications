@@ -5,7 +5,7 @@ usage="Usage:\ninstalled <command>"
 if [ $# == 1 ]; then
 	cmd="$1"	
 else
-	echo $usage
+	echo -e $usage
 	exit
 fi
 

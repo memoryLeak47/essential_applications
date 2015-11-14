@@ -3,12 +3,12 @@
 req "cat"
 req "java"
 
-error="Usage: javaRun [-p path] [args]"
+usage="Usage:\tjavaRun [-p path] [args]"
 mp=
 
 if [ a$1 == a"-p" ]; then
 	if [ -z $2 ]; then
-		echo "$error"
+		echo -e "$usage"
 		exit
 	fi
 	mp="$2"

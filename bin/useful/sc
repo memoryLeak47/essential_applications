@@ -1,7 +1,9 @@
 #!/bin/bash
 
+usage="Usage:\tsc <shortcut> [args]"
+
 if [ -z "$1" ]; then
-	echo "Usage:\tsc <shortcut> [args]"
+	echo -e $usage
 	exit
 fi
 

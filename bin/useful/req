@@ -8,7 +8,7 @@ elif [ $# == 2 ] && [ "a$1" == 'a-v' ]; then
 	mode='-v'
 	cmd="$2"
 else
-	echo $usage
+	echo -e $usage
 	exit
 fi
 

@@ -41,6 +41,6 @@ else
 		sleep $*
 		paplay "$song"
 	else
-		echo "$usage"
+		echo -e "$usage"
 	fi
 fi

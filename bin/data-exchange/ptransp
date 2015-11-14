@@ -1,13 +1,13 @@
 #!/bin/bash
 
-err="Usage:\tptransp s <in> <IP>\n\tptransp r [<out>]"
+usage="Usage:\tptransp s <in> <IP>\n\tptransp r [<out>]"
 
 rm $ul_tmpdir/send.zip &>/dev/null
 rm $ul_tmpdir/recv.zip &>/dev/null
 
 if [ a$1 == as ]; then # send
 	if [ ! $# == 3 ]; then
-		echo $err
+		echo -e $usage
 		exit
 	fi
 	if [ ! -e "$2" ]; then # check for existance
@@ -39,7 +39,7 @@ elif [ a$1 == ar ]; then # receive
 		unzip $ul_tmpdir/recv.zip -d "$2" >/dev/null
 	fi
 else
-	echo $err
+	echo -e $usage
 fi
 
 rm $ul_tmpdir/send.zip &>/dev/null
