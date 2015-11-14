@@ -1,5 +1,4 @@
 #!/bin/bash
-# findword v0
 
 req "grep"
 

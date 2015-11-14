@@ -1,5 +1,4 @@
 #!/bin/bash
-# completer v0
 
 usage="usage:\tcompleter -a\n\tcompleter <binfile>"
 

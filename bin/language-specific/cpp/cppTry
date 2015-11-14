@@ -1,5 +1,4 @@
 #!/bin/bash
-# cppTry v0
 
 req "g++"
 req "$editor"

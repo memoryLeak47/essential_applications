@@ -1,5 +1,4 @@
 #!/bin/bash
-# update-up v0
 
 git clone "https://github.com/memoryLeak47/utils-library.git" $ul_tmpdir/git
 rm -r $ul_bindir &>/dev/null

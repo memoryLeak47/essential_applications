@@ -1,5 +1,4 @@
 #!/bin/bash
-# cb v5
 
 req "$editor"
 req "tree"

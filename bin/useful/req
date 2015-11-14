@@ -1,5 +1,4 @@
 #!/bin/bash
-# req v1
 
 usage="Usage: req [-v] <command>"
 

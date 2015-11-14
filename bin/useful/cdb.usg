@@ -1,5 +1,4 @@
 #!/bin/bash
-# cdb v0
 
 req "readlink"
 

@@ -1,5 +1,4 @@
 #!/bin/bash
-# jpackage-man v0
 
 if [ ! -d "src" ]; then
 	echo "You have to be in project-root. src not found"

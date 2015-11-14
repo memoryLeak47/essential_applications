@@ -1,3 +1,0 @@
-#!/bin/bash
-
-~/apps/games/limbo/limbo &>/dev/null &

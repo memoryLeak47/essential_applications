@@ -1,5 +1,4 @@
 #!/bin/bash
-# justKb v0
 
 req "xbindkeys"
 req "xmodmap"

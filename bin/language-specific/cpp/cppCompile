@@ -1,5 +1,4 @@
 #!/bin/bash
-# cppCompile v0
 
 req "g++"
 

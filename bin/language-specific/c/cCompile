@@ -1,5 +1,4 @@
 #!/bin/bash
-# cCompile v0
 
 req "gcc"
 req "find"

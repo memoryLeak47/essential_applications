@@ -1,3 +1,0 @@
-#!/bin/bash
-
-~/apps/games/eufloria/EufloriaHD/EufloriaHD.bin.x86_64 &>/dev/null &

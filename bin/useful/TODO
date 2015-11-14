@@ -1,5 +1,4 @@
 #!/bin/bash
-# TODO v0
 
 req "$editor"
 

@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# itransp v1
 
 import sys
 import socket

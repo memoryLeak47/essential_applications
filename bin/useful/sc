@@ -1,5 +1,4 @@
 #!/bin/bash
-# sc v1
 
 if [ -z "$1" ]; then
 	echo "Usage: sc <shortcut> [args]"

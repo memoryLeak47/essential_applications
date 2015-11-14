@@ -1,5 +1,4 @@
 #!/bin/bash
-# download v1
 
 req 'wget'
 

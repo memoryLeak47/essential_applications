@@ -1,14 +1,11 @@
 #!/bin/bash
-# .bashrc v48
+
+echo "loading .bashrc"
 
 . ~/.utils-library/bin/ul/init-ul
 
 alias cda='cd ~/projects/java/game/arrows'
 export proj='/home/memoryLeak47/projects'
-
-version=$(awk "NR==2 {print}" "${BASH_SOURCE[${#BASH_SOURCE[@]} - 1]}")
-echo "loaded .bashrc v${version##*v}"
-version=
 
 export editor=vim
 export browser=firefox

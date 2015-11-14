@@ -1,5 +1,4 @@
 #!/bin/bash
-# upremove v0
 
 req "ftp"
 

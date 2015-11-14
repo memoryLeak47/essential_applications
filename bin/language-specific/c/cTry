@@ -1,5 +1,4 @@
 #!/bin/bash
-# cTry v0
 
 req "gcc"
 req "$editor"

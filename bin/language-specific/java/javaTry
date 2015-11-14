@@ -1,5 +1,4 @@
 #!/bin/bash
-# javaTry v0
 
 req "javac"
 req "java"

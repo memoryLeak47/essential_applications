@@ -1,5 +1,4 @@
 #!/bin/bash
-# javaCompile v1
 
 req "javac"
 req "xargs"

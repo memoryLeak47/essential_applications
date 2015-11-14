@@ -1,5 +1,4 @@
 #!/bin/bash
-# paraterm v5
 
 # paraterm is used to run other applications in a new gnome-terminal which stays open after it is done
 

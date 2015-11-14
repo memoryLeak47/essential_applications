@@ -1,5 +1,4 @@
 #!/bin/bash
-# ptransp v9
 
 err="Usage: ptransp [s <in> <IP>]/[r [<out>]]"
 

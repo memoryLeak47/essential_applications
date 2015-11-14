@@ -1,5 +1,4 @@
 #!/bin/bash
-# setKeybind v1
 
 req "xbindkeys"
 req "killall"

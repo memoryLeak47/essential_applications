@@ -1,5 +1,4 @@
 #!/bin/bash
-# javaRun v1
 
 req "cat"
 req "java"

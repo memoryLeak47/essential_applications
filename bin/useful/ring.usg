@@ -1,5 +1,4 @@
 #!/bin/bash
-# ring v0
 
 req "paplay"
 

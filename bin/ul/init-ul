@@ -1,5 +1,4 @@
 #!/bin/bash
-# init-ul v5
 
 export ul_root="$HOME/.utils-library"
 export ul_tmpdir="$ul_root/tmp"

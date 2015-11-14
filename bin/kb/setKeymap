@@ -1,5 +1,4 @@
 #!/bin/bash
-# setKeymap v1
 
 req "xmodmap"
 
