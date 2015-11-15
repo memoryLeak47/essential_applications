@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. bin/ul/init-ul --only-vars
+. $ul_bindir/ul/init-ul --only-vars
 
 git clone "https://github.com/memoryLeak47/utils-library.git" $ul_tmpdir/git
 rm -r $ul_bindir
