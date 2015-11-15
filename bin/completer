@@ -14,3 +14,7 @@ fi
 if [ "$1" == "cb" ] || [ "$1" == "-a" ]; then
 	complete -W "$(cd $ul_tmpdir/cb; find)" cb 
 fi
+
+if [ "$1" == "goto" ] || [ "$1" == "-a" ]; then
+	complete -W "$(cat $ul_tmpdir/gotolib)" goto
+fi
