@@ -2,9 +2,10 @@
 
 . $ul_bindir/ul/init-ul --only-vars
 
-git clone "https://github.com/memoryLeak47/utils-library.git" $ul_tmpdir/git
-rm -r $ul_bindir
-cp -r $ul_tmpdir/git/bin $ul_bindir
-rm -r $ul_resdir
-cp -r $ul_tmpdir/git/res $ul_resdir
-yes | rm -r $ul_tmpdir/git
+if [ $(git clone "https://github.com/memoryLeak47/utils-library.git" $ul_tmpdir/git) ]; then
+	rm -r $ul_bindir
+	cp -r $ul_tmpdir/git/bin $ul_bindir
+	rm -r $ul_resdir
+	cp -r $ul_tmpdir/git/res $ul_resdir
+	yes | rm -r $ul_tmpdir/git
+fi
