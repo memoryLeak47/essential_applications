@@ -5,7 +5,7 @@
 yes | rm -r $ul_tmpdir/git &>/dev/null
 git clone "https://github.com/memoryLeak47/utils-library.git" $ul_tmpdir/git
 
-if [ "$?" ];
+if [ -d $ul_tmpdir/git ];
 then
 	rm -r $ul_bindir
 	cp -r $ul_tmpdir/git/bin $ul_bindir
