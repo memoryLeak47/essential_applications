@@ -5,7 +5,7 @@ req "tree"
 req "find"
 req "completer"
 
-usage="Usage:\tcb -l\n\tcb -r [file]\n\tcb -d [dirname]\n\tcb [file]\n\tcb -m [file/directory] [target-position]"
+usage="Usage:\tcb -l\n\tcb -r [file/directory]\n\tcb -d [dirname]\n\tcb [file]\n\tcb -m [file/directory] [target-position]\n\tcb -c [file/directory] [target-position]"
 
 if [ -n "$1" ]; then
 	if [ "$1" == "--help" ]; then
@@ -26,7 +26,7 @@ if [ -n "$1" ]; then
 				echo "Can't find file $ul_tmpdir/cb/$2"
 			fi
 		else
-			echo -e $usage
+			echo -e "$usage"
 		fi
 	elif [ "$1" == "-d" ]; then
 		if [ -n "$2" ]; then
@@ -40,9 +40,19 @@ if [ -n "$1" ]; then
 				echo "$ul_tmpdir/cb/$2 doesn't exist"
 			fi
 		else
-			echo -e $usage
+			echo -e "$usage"
 		fi
 	
+	elif [ "$1" == "-c" ]; then
+		if [ -n "$3" ]; then
+			if [ -e "$ul_tmpdir/cb/$2" ]; then
+				cp -r "$ul_tmpdir/cb/$2" "$ul_tmpdir/cb/$3"
+			else
+				echo "$ul_tmpdir/cb/$2 doesn't exist"
+			fi
+		else
+			echo -e "$usage"
+		fi
 	else
 		$editor $ul_tmpdir/cb/"$1"
 	fi
