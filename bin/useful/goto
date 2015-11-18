@@ -35,10 +35,11 @@ else
 	line=$(grep "$id:" $libpath)
 	line=${line#*:}
 	if [ -n "$line" ]; then
-		echo $line
 		xdotool type "cd $line"
 		xdotool key Return
 		tput cuu 2
 		tput ed 1
+	else
+		echo "id '$line' not found"
 	fi
 fi
