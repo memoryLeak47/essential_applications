@@ -15,8 +15,6 @@ justkb_mouse_speed=5
 
 ulimit -c unlimited
 
-. completer -a
-
 c() { cd $*; ls --color=auto; }
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
