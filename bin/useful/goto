@@ -40,6 +40,6 @@ else
 		tput cuu 2
 		tput ed 1
 	else
-		echo "id '$line' not found"
+		echo "id '$2' not found"
 	fi
 fi
