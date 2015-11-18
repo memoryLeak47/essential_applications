@@ -34,8 +34,11 @@ else
 	id=$1
 	line=$(grep "$id:" $libpath)
 	line=${line#*:}
-	xdotool type "cd $line"
-	xdotool key Return
-	tput cuu 2
-	tput ed 1
+	if [ -n "$line" ]; then
+		echo $line
+		xdotool type "cd $line"
+		xdotool key Return
+		tput cuu 2
+		tput ed 1
+	fi
 fi
