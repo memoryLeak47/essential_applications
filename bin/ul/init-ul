@@ -1,6 +1,10 @@
 #!/bin/bash
 
-export ul_root=$(getroot-ul)
+if [ ! -f "$HOME/.ul-root" ]; then
+	echo "\"$HOME/.ul-root\": file not found"
+	return
+fi
+export ul_root=$(cat $HOME/.ul-root)
 export ul_tmpdir="$ul_root/tmp"
 export ul_resdir="$ul_root/res"
 export ul_bindir="$ul_root/bin"
