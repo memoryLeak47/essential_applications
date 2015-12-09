@@ -1,7 +1,7 @@
 #!/bin/bash
 
-req "xdotool"
-req "tput"
+. req "xdotool"
+. req "tput"
 
 libpath="$ul_tmpdir/gotolib"
 usage="Usage:\tgoto -n <id> <path>\n\tgoto <id>\n\tgoto -l"

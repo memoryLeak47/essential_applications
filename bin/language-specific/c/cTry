@@ -1,7 +1,7 @@
 #!/bin/bash
 
-req "gcc"
-req "$editor"
+. req "gcc"
+. req "$editor"
 
 clear
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-req "readlink"
+. req "readlink"
 
 if [ "$1" -eq "$1" ] 2>/dev/null; then
 	for (( c=0; c<$1; c++ )); do

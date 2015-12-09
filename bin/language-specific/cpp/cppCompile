@@ -1,6 +1,6 @@
 #!/bin/bash
 
-req "g++"
+. req "g++"
 
 clear
 

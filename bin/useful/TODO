@@ -1,5 +1,5 @@
 #!/bin/bash
 
-req "$editor"
+. req "$editor"
 
 $editor $ul_tmpdir/cb/TODO

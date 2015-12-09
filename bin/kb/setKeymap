@@ -1,6 +1,6 @@
 #!/bin/bash
 
-req "xmodmap"
+. req "xmodmap"
 
 if [ -f $ul_resdir/keymaps/$1 ]; then
 	xmodmap $ul_resdir/keymaps/$1

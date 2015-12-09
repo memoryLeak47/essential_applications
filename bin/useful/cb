@@ -1,9 +1,9 @@
 #!/bin/bash
 
-req "$editor"
-req "tree"
-req "find"
-req "completer"
+. req "$editor"
+. req "tree"
+. req "find"
+. req "completer"
 
 usage="Usage:\tcb -l\n\tcb -r [file/directory]\n\tcb -d [dirname]\n\tcb [file]\n\tcb -m [file/directory] [target-position]\n\tcb -c [file/directory] [target-position]"
 

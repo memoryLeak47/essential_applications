@@ -1,9 +1,9 @@
 #!/bin/bash
 
-req "xargs"
-req "vim"
+. req "xargs"
+. req "$editor"
 
 results=$(find -name "$1")
 numres=$(echo "$results" | wc -l)
 
-vim $results
+$editor $results

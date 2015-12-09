@@ -1,7 +1,7 @@
 #!/bin/bash
 
-req "cat"
-req "java"
+. req "cat"
+. req "java"
 
 usage="Usage:\tjavaRun [-p path] [args]"
 mp=

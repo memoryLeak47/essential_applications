@@ -1,6 +1,6 @@
 #!/bin/bash
 
-req "grep"
+. req "grep"
 
 usage="Usage:\tfindword <word> [<files>]"
 
