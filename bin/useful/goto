@@ -1,35 +1,37 @@
 #!/bin/bash
-# zu erst wird die id, danach der Pfad angegeben
 
 req "xdotool"
 req "tput"
 
 libpath="$ul_tmpdir/gotolib"
-usage="Usage:\tgoto -n [id] [path]\n\tgoto [id]"
+usage="Usage:\tgoto -n <id> <path>\n\tgoto <id>\n\tgoto -l"
 
 if [ ! -f "$libpath" ]; then
 	touch "$libpath"
 fi
 
 if [ -z "$1" ]; then
-	echo -e $usage
+	echo -e "$usage"
 	exit
 fi
 
 if [ $1 == "-l" ]; then
-	echo
 	while read LINE
 	do
 		printf ${LINE%:*}
-		printf " | "
+		printf " -> "
+		printf ${LINE#*:}
+		echo
 	done < $libpath
-	echo
-	echo
 	exit
 fi
 
 if [ $1 == "-n" ]; then
-	echo "$2:$3" >> $libpath
+	if [ -n "$3" ]; then # TODO missing: error if ID already defined
+		echo "$2:$3" >> $libpath
+	else
+		echo "goto: Too few arguments | goto -n <id> <path>"
+	fi
 else
 	id=$1
 	line=$(grep "$id:" $libpath)
