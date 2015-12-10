@@ -15,6 +15,6 @@ fi
 if [ "a"$(type -t $cmd) != "a" ]; then
 	[ "a$mode" == 'a-v' ] && type $cmd
 else	
-	echo "$cmd has to be installed for this service. Terminating..."
-	kill -INT $$ # return all funcs
+	echo "'$cmd' has to be installed for this service."
+	kill $PPID
 fi

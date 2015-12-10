@@ -16,5 +16,11 @@ if [ "$1" == "cb" ] || [ "$1" == "-a" ]; then
 fi
 
 if [ "$1" == "goto" ] || [ "$1" == "-a" ]; then
-	complete -W "$(cat $ul_tmpdir/gotolib)" goto
+	tmp=$(cat $ul_tmpdir/gotolib)
+	res=
+	for ok in $tmp
+	do
+		res="$res ${ok%:*}"
+	done
+	complete -W "$res" goto
 fi

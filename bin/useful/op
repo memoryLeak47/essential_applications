@@ -1,7 +1,7 @@
 #!/bin/bash
 
-. req "xargs"
-. req "$editor"
+req "xargs"
+req "$editor"
 
 results=$(find -name "$1")
 numres=$(echo "$results" | wc -l)

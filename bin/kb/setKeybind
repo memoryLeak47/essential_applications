@@ -1,7 +1,7 @@
 #!/bin/bash
 
-. req "xbindkeys"
-. req "killall"
+req "xbindkeys"
+req "killall"
 
 if [ -f $ul_resdir/keybinds/$1 ]; then
 	killall xbindkeys
