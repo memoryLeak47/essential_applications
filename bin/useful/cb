@@ -10,6 +10,7 @@ usage="Usage:\tcb -l\n\tcb -r [file/directory]\n\tcb -d [dirname]\n\tcb [file]\n
 if [ -n "$1" ]; then
 	if [ "$1" == "--help" ]; then
 		echo -e "$usage"
+		exit
 	fi
 
 	if [ ! -d "$ul_tmpdir/cb" ]; then
