@@ -2,9 +2,9 @@
 
 usage="Usage:\tsetWorkspaces <vertical> <horizontal>"
 
-if [ -n $2 ]; then
-	gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize $1
-	gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize $2
+if [[ -n "$2" ]] && [[ -z "$3" ]]; then
+	gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize "$1"
+	gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize "$2"
 else
 	echo -e "$usage"
 fi
