@@ -1,5 +1,7 @@
 #!/bin/bash
 
+req 'gsettings'
+
 usage="Usage:\tsetWorkspaces <vertical> <horizontal>"
 
 if [[ -n "$2" ]] && [[ -z "$3" ]]; then
