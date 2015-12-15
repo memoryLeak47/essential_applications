@@ -2,11 +2,59 @@
 
 req 'gsettings'
 
-usage="Usage:\tsetWorkspaces <vertical> <horizontal>"
+usage="Usage:\tsetWorkspaces <vertical> <horizontal>\n\tsetWorkspaces -f <file>"
 
 if [[ -n "$2" ]] && [[ -z "$3" ]]; then
-	gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize "$1"
-	gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize "$2"
+	if [ "$1" = "-f" ]; then
+		targetfile="$ul_resdir/workspaces/$2"
+		if [ -f "$targetfile" ]; then
+			vh=$(head -n 1 "$targetfile")
+			v=${vh%:*}
+			h=${vh#*:}
+			gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize "$v"
+			gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize "$h"
+			while read line
+			do
+				# if line doesnt contain ')' continue
+				if [[ ${line#*)} = $line ]]; then
+					continue;
+				fi
+				posV=${line%:*}
+				posH=${line#*:}
+				posH=${posH%%)*}
+				cmd=${line#*)}
+
+				# reset position
+				for ((x=0; x<$v; x++));
+				do
+					xdotool key "ctrl+shift+Left"
+				done
+				for ((y=0; y<$h; y++));
+				do
+					xdotool key "ctrl+shift+Up"
+				done
+
+				# go to correct position
+				for ((x=0; x<$posV; x++));
+				do
+					xdotool key "ctrl+shift+Right"
+				done
+				for ((y=0; y<$posH; y++));
+				do
+					xdotool key "ctrl+shift+Down"
+				done
+
+				# execute command
+				$cmd &
+				sleep 2
+			done < "$targetfile"
+		else	
+			echo "Can't find file '$targetfile'"
+		fi
+	else
+		gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize "$1"
+		gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize "$2"
+	fi
 else
 	echo -e "$usage"
 fi
