@@ -45,8 +45,8 @@ if [[ -n "$2" ]] && [[ -z "$3" ]]; then
 				done
 
 				# execute command
-				$cmd &
-				sleep 2
+				$cmd & &>/dev/null
+				sleep 3
 			done < "$targetfile"
 		else	
 			echo "Can't find file '$targetfile'"
