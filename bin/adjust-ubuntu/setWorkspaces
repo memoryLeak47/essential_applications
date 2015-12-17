@@ -8,11 +8,11 @@ if [[ -n "$2" ]] && [[ -z "$3" ]]; then
 	if [ "$1" = "-f" ]; then
 		targetfile="$ul_resdir/workspaces/$2"
 		if [ -f "$targetfile" ]; then
-			vh=$(head -n 1 "$targetfile")
-			v=${vh%:*}
-			h=${vh#*:}
-			gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize "$v"
-			gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize "$h"
+			yx=$(head -n 1 "$targetfile")
+			y=${yx%:*}
+			x=${yx#*:}
+			gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize "$x"
+			gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize "$y"
 			while read line
 			do
 				# if line doesnt contain ')' continue
