@@ -34,3 +34,4 @@ keycode  61 = Mode_switch Mode_switch
 add control = Control_R
 add control = Control_L
 
+keysym Caps_Lock = Alt_L
