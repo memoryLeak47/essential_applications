@@ -14,20 +14,22 @@ if [ a$1 == a"-p" ]; then
 	mp="$2"
 	shift 2
 else
-	if [ ! -f ".mainpath" ]; then
-		echo "cannot find .mainpath"
+	if [ -d "src" ]; then
+		mp=$(cd src; grep -l "public static void main(" -r)
+		mp=${mp%\.java}
+	else
+		echo "src-folder not found."
 		exit
 	fi
-	mp=$(cat ".mainpath")
 fi
 
 if [ ! -d "bin" ]; then
-	echo "theres no bin directory...";
+	echo "theres no bin directory..."
 	exit
 fi
 
 if [ ! -d "res" ]; then
-	echo "theres no res directory...";
+	echo "theres no res directory..."
 	exit
 fi
 java -cp "bin:res" $mp $@
