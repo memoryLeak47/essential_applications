@@ -7,9 +7,9 @@ echo "loading .bashrc"
 alias cda='cd ~/projects/java/game/arrows'
 export proj='/home/memoryLeak47/projects'
 
-export editor=vim
-export browser=firefox
-export terminal_browser=w3m
+export ul_editor=vim
+export ul_browser=firefox
+export ul_terminal_browser=w3m
 justkb=off
 justkb_mouse_speed=5
 

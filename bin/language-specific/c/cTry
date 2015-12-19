@@ -1,7 +1,7 @@
 #!/bin/bash
 
 req "gcc"
-req "$editor"
+req "$ul_editor"
 
 clear
 
@@ -9,7 +9,7 @@ if [ a$1 == 'a-n' ]; then
 	echo -e "\n\nint main()\n{\n\treturn 0;\n}" >  $ul_tmpdir/CTry.c
 fi
 if [ ! a$1 == 'a-r' ]; then
-	$editor $ul_tmpdir/CTry.c
+	$ul_editor $ul_tmpdir/CTry.c
 fi
 gcc -O2 -g -Wall -c $ul_tmpdir/CTry.c -o $ul_tmpdir/CTry.o
 if [ -f $ul_tmpdir/CTry.o ]; then

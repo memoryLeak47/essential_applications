@@ -1,6 +1,6 @@
 #!/bin/bash
 
-req "$editor"
+req "$ul_editor"
 req "tree"
 req "find"
 req "completer"
@@ -55,7 +55,7 @@ if [ -n "$1" ]; then
 			echo -e "$usage"
 		fi
 	else
-		$editor $ul_tmpdir/cb/"$1"
+		$ul_editor $ul_tmpdir/cb/"$1"
 	fi
 else
 	echo -e "$usage"

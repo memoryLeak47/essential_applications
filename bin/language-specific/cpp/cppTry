@@ -1,7 +1,7 @@
 #!/bin/bash
 
 req "g++"
-req "$editor"
+req "$ul_editor"
 
 clear
 
@@ -9,7 +9,7 @@ if [ a$1 == 'a-n' ]; then
 	echo -e "#include <iostream>\n#define con(x) std::cout << x << std::endl\n\nint main()\n{\n\treturn 0;\n}" >  $ul_tmpdir/CppTry.cpp
 fi
 if [ ! a$1 == 'a-r' ]; then
-	$editor $ul_tmpdir/CppTry.cpp
+	$ul_editor $ul_tmpdir/CppTry.cpp
 fi
 g++ -O2 -g -Wall -c $ul_tmpdir/CppTry.cpp -o $ul_tmpdir/CppTry.o
 if [ -f $ul_tmpdir/CppTry.o ]; then

@@ -2,7 +2,7 @@
 
 req "javac"
 req "java"
-req "$editor"
+req "$ul_editor"
 
 clear
 
@@ -16,7 +16,7 @@ if [ a$1 == 'a-n' ] || [ ! -f "$srcfile" ]; then
 fi
 
 if [ ! a$1 == 'a-r' ]; then
-	$editor $srcfile
+	$ul_editor $srcfile
 	javac $srcfile
 fi
 

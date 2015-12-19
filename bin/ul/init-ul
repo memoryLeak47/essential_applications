@@ -4,6 +4,17 @@ if [ ! -f "$HOME/.ul-root" ]; then
 	echo "\"$HOME/.ul-root\": file not found"
 	return
 fi
+
+if [ -z "$ul_editor" ]; then
+	export ul_editor="vim"
+fi
+if [ -z "$ul_browser" ]; then
+	export ul_browser=firefox
+fi
+if [ -z "$ul_terminal_browser" ]; then
+	export ul_terminal_browser=w3m
+fi
+
 export ul_root=$(cat $HOME/.ul-root)
 export ul_tmpdir="$ul_root/tmp"
 export ul_resdir="$ul_root/res"
