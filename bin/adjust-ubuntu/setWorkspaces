@@ -52,8 +52,8 @@ if [[ -n "$2" ]] && [[ -z "$3" ]]; then
 			echo "Can't find file '$targetfile'"
 		fi
 	else
-		gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize "$1"
-		gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize "$2"
+		gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize "$1"
+		gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize "$2"
 	fi
 else
 	echo -e "$usage"
