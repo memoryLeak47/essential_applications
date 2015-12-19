@@ -43,3 +43,4 @@ do
 done
 
 . completer -a
+. sourcer

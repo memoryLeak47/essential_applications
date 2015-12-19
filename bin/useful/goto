@@ -1,8 +1,5 @@
 #!/bin/bash
 
-req "xdotool"
-req "tput"
-
 libpath="$ul_tmpdir/gotolib"
 usage="Usage:\tgoto -n <id> <path>\n\tgoto <id>\n\tgoto -l"
 
@@ -12,7 +9,7 @@ fi
 
 if [ -z "$1" ]; then
 	echo -e "$usage"
-	exit
+	return
 fi
 
 if [ $1 == "-l" ]; then
@@ -23,7 +20,7 @@ if [ $1 == "-l" ]; then
 		printf ${LINE#*:}
 		echo
 	done < $libpath
-	exit
+	return
 fi
 
 if [ $1 == "-n" ]; then
@@ -37,10 +34,7 @@ else
 	line=$(grep "$id:" $libpath)
 	line=${line#*:}
 	if [ -n "$line" ]; then
-		xdotool type --clearmodifiers "cd $line"
-		xdotool key --clearmodifiers Return
-		tput cuu 2
-		tput ed 1
+		cd $line
 	else
 		echo "id '$1' not found"
 	fi

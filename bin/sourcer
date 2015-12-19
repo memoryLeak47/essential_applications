@@ -1,0 +1,4 @@
+#!/bin/bash
+
+alias goto=". goto"
+alias setWorkspaces=". setWorkspaces"
