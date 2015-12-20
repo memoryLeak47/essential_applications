@@ -12,11 +12,15 @@ if [ "$1" == "sc" ] || [ "$1" == "-a" ]; then
 fi
 
 if [ "$1" == "cb" ] || [ "$1" == "-a" ]; then
-	tmp=$(cd $ul_localdir/cb; find -wholename "./*" | sed 's/^.\///g')
+	if [ ! -d "$ul_localresdir/cb" ]; then
+		mkdir $ul_localresdir/cb
+	fi
+
+	tmp=$(cd $ul_localresdir/cb; find -wholename "./*" | sed 's/^.\///g')
 	res=
 	for ok in $tmp
 	do
-		if [ -d $ul_localdir/cb/$ok ]; then
+		if [ -d $ul_localresdir/cb/$ok ]; then
 			res="$res ${ok}/"
 		else
 			res="$res $ok"
@@ -26,6 +30,10 @@ if [ "$1" == "cb" ] || [ "$1" == "-a" ]; then
 fi
 
 if [ "$1" == "goto" ] || [ "$1" == "-a" ]; then
+	if [ ! -f $ul_localresdir/gotolib ]; then
+		touch $ul_localresdir/gotolib
+	fi
+
 	tmp=$(cat $ul_localresdir/gotolib)
 	res=
 	for ok in $tmp
