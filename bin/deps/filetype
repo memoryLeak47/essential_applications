@@ -1,18 +1,23 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 import sys
+import pathlib
 
 def err():
-	print "Usage:\tfiletype <file>"
+	print("Usage:\tfiletype <file>")
 	sys.exit(0)
 
 if len(sys.argv) == 2:
+	p = pathlib.Path(sys.argv[1])
+	if not p.exists():
+		print("file '" + sys.argv[1] + "' doesn't exist")
+		sys.exit(0)
 	f = os.popen('file -bi ' + sys.argv[1], 'r')
 	if f.read().startswith('text'):
-		print "text"
+		print("text")
 	else:
-		print "binary"
+		print("binary")
 
 else:
 	err()
