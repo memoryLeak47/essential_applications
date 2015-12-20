@@ -1,3 +1,21 @@
 #!/bin/bash
 
-sed -i 's/'$1'/'$2'/g' $(grep -s -r -l $1)
+req 'filetype'
+
+usage="Usage:\treplace <a> <b> [<files>]"
+
+if [ -n "$3" ]; then
+	inputfiles=$3
+else
+	inputfiles=$(find -type f)
+fi
+
+files=
+for file in $inputfiles
+do
+	if [ $(filetype $file) == "text" ]; then
+		files="$files $file"
+	fi
+done
+
+sed -i 's/'$1'/'$2'/g' $files
