@@ -13,7 +13,7 @@ fi
 files=
 for file in $inputfiles
 do
-	if [ $(filetype $file) == "text" ]; then
+	if [ "$(filetype $file)" == "text" ]; then
 		files="$files $file"
 	fi
 done
