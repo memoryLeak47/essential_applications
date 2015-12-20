@@ -7,9 +7,9 @@ req "$ul_editor"
 clear
 
 filename="JavaTry"
-srcfile="$ul_tmpdir/JavaTry.java"
-binfile="$ul_tmpdir/JavaTry.class"
-dir="$ul_tmpdir"
+srcfile="$ul_localresdir/JavaTry.java"
+binfile="$ul_localresdir/JavaTry.class"
+dir="$ul_localresdir"
 
 if [ a$1 == 'a-n' ] || [ ! -f "$srcfile" ]; then
 	echo -e "class JavaTry\n{\n\tstatic public void main(String args[])\n\t{\n\t\t\n\t}\n}" > "$srcfile"

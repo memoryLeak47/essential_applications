@@ -13,32 +13,32 @@ if [ -n "$1" ]; then
 		exit
 	fi
 
-	if [ ! -d "$ul_tmpdir/cb" ]; then
-		mkdir "$ul_tmpdir/cb"
+	if [ ! -d "$ul_localresdir/cb" ]; then
+		mkdir "$ul_localresdir/cb"
 	fi
 
 	if [ "$1" == "-l" ]; then
-		tree "$ul_tmpdir/cb"
+		tree "$ul_localresdir/cb"
 	elif [ "$1" == "-r" ]; then
 		if [ -n "$2" ]; then
-			if [ -e "$ul_tmpdir/cb/$2" ]; then
-				rm -r "$ul_tmpdir/cb/$2"
+			if [ -e "$ul_localresdir/cb/$2" ]; then
+				rm -r "$ul_localresdir/cb/$2"
 			else
-				echo "Can't find file $ul_tmpdir/cb/$2"
+				echo "Can't find file $ul_localresdir/cb/$2"
 			fi
 		else
 			echo -e "$usage"
 		fi
 	elif [ "$1" == "-d" ]; then
 		if [ -n "$2" ]; then
-			mkdir "$ul_tmpdir/cb/$2"
+			mkdir "$ul_localresdir/cb/$2"
 		fi
 	elif [ "$1" == "-m" ]; then
 		if [ -n "$3" ]; then
-			if [ -e "$ul_tmpdir/cb/$2" ]; then
-				mv "$ul_tmpdir/cb/$2" "$ul_tmpdir/cb/$3"
+			if [ -e "$ul_localresdir/cb/$2" ]; then
+				mv "$ul_localresdir/cb/$2" "$ul_localresdir/cb/$3"
 			else
-				echo "$ul_tmpdir/cb/$2 doesn't exist"
+				echo "$ul_localresdir/cb/$2 doesn't exist"
 			fi
 		else
 			echo -e "$usage"
@@ -46,16 +46,16 @@ if [ -n "$1" ]; then
 	
 	elif [ "$1" == "-c" ]; then
 		if [ -n "$3" ]; then
-			if [ -e "$ul_tmpdir/cb/$2" ]; then
-				cp -r "$ul_tmpdir/cb/$2" "$ul_tmpdir/cb/$3"
+			if [ -e "$ul_localresdir/cb/$2" ]; then
+				cp -r "$ul_localresdir/cb/$2" "$ul_localresdir/cb/$3"
 			else
-				echo "$ul_tmpdir/cb/$2 doesn't exist"
+				echo "$ul_localresdir/cb/$2 doesn't exist"
 			fi
 		else
 			echo -e "$usage"
 		fi
 	else
-		$ul_editor $ul_tmpdir/cb/"$1"
+		$ul_editor $ul_localresdir/cb/"$1"
 	fi
 else
 	echo -e "$usage"

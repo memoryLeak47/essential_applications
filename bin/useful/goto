@@ -1,6 +1,6 @@
 #!/bin/bash
 
-libpath="$ul_tmpdir/gotolib"
+libpath="$ul_localresdir/gotolib"
 usage="Usage:\tgoto -n <id> <path>\n\tgoto <id>\n\tgoto -l"
 
 if [ ! -f "$libpath" ]; then
