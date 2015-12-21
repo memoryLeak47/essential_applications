@@ -5,7 +5,7 @@ echo "loading .bashrc"
 . ~/.utils-library/bin/ul/init-ul
 
 alias cda='cd ~/projects/java/game/arrows'
-export proj='/home/memoryLeak47/projects'
+export proj="/home/$USER/projects"
 
 export ul_editor=vim
 export ul_browser=firefox
