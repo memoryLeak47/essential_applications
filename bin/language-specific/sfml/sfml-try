@@ -1,6 +1,7 @@
 #!/bin/bash
 
 req "g++"
+req "libsfml-dev"
 req "$ul_editor"
 
 clear
@@ -13,7 +14,7 @@ if [ ! a$1 == 'a-r' ]; then
 fi
 g++ -O2 -g -Wall -c $ul_localresdir/CppTry.cpp -o $ul_localresdir/CppTry.o
 if [ -f $ul_localresdir/CppTry.o ]; then
-	g++ $ul_localresdir/CppTry.o -o $ul_localresdir/CppTry
+	g++ $ul_localresdir/CppTry.o -o $ul_localresdir/CppTry -lsfml-window -lsfml-system -lsfml-graphics
 	rm $ul_localresdir/CppTry.o
 fi
 if [ -f $ul_localresdir/CppTry ]; then
