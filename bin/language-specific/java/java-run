@@ -27,9 +27,4 @@ if [ ! -d "bin" ]; then
 	echo "theres no bin directory..."
 	exit
 fi
-
-if [ ! -d "res" ]; then
-	echo "theres no res directory..."
-	exit
-fi
 java -cp "bin:res" $mp $@
