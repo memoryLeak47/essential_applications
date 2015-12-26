@@ -7,40 +7,39 @@ if [ -z "$1" ]; then
 	exit
 fi
 
-
 if [ "$1" == "j" ]; then
 	shift
-	req "javaCompile"
-	req "javaRun"
-	javaCompile
-	javaRun $@
+	req "java-compile"
+	req "java-run"
+	java-compile
+	java-run $@
 elif [ "$1" == "jc" ]; then
-	req "javaCompile"
-	javaCompile
+	req "java-compile"
+	java-compile
 elif [ "$1" == "jr" ]; then
 	shift
-	req "javaRun"
-	javaRun $@
+	req "java-run"
+	java-run $@
 elif [ "$1" == "cpp" ]; then
 	shift
-	req "cppCompile"
-	cppCompile
+	req "cpp-compile"
+	cpp-compile
 	./exe $@
 elif [ "$1" == "cppc" ]; then
 	shift
-	req "cppCompile"
-	cppCompile
+	req "cpp-compile"
+	cpp-compile
 elif [ "$1" == "cppr" ]; then
 	./exe $@
 elif [ "$1" == "c" ]; then
 	shift
-	req "cCompile"
-	cCompile
+	req "c-compile"
+	c-compile
 	./exe $@
 elif [ "$1" == "cc" ]; then
 	shift
-	req "cCompile"
-	cCompile
+	req "c-compile"
+	c-compile
 elif [ "$1" == "cr" ]; then
 	./exe $@
 else
