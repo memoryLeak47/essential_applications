@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -n "$1" ]; then
+	wc -l $(find -name "*.$1")
+else
+	wc -l $(find -type f)
+fi
