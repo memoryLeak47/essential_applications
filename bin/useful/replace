@@ -7,7 +7,7 @@ usage="Usage:\treplace <a> <b> [<files>]"
 if [ -n "$3" ]; then
 	inputfiles=$3
 else
-	inputfiles=$(find -type f)
+	inputfiles=$(grep -s -r -l $1)
 fi
 
 files=
