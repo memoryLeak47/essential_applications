@@ -11,8 +11,7 @@ if [ "$1" == "j" ]; then
 	shift
 	req "java-compile"
 	req "java-run"
-	java-compile
-	java-run $@
+	java-compile && java-run $@
 elif [ "$1" == "jc" ]; then
 	req "java-compile"
 	java-compile
@@ -23,8 +22,7 @@ elif [ "$1" == "jr" ]; then
 elif [ "$1" == "cpp" ]; then
 	shift
 	req "cpp-compile"
-	cpp-compile
-	./exe $@
+	cpp-compile && ./exe $@
 elif [ "$1" == "cppc" ]; then
 	shift
 	req "cpp-compile"
@@ -34,8 +32,7 @@ elif [ "$1" == "cppr" ]; then
 elif [ "$1" == "c" ]; then
 	shift
 	req "c-compile"
-	c-compile
-	./exe $@
+	c-compile && ./exe $@
 elif [ "$1" == "cc" ]; then
 	shift
 	req "c-compile"
