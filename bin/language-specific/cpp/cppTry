@@ -3,7 +3,7 @@
 req "g++"
 req "$ul_editor"
 
-clear
+tput reset
 
 if [ a$1 == 'a-n' ]; then
 	echo -e "#include <iostream>\n#define con(x) std::cout << x << std::endl\n\nint main()\n{\n\treturn 0;\n}" >  $ul_localresdir/CppTry.cpp

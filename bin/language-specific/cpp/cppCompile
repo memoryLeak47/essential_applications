@@ -2,7 +2,7 @@
 
 req "g++"
 
-clear
+tput reset
 
 files=`tree -f -i -P "*.cpp" --noreport`
 compilable=

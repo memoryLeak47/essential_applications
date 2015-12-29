@@ -3,8 +3,7 @@
 req "g++"
 req "libsfml-dev"
 
-
-clear
+tput reset
 
 files=`tree -f -i -P "*.cpp" --noreport`
 compilable=
