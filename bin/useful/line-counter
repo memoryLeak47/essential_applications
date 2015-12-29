@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -n "$1" ]; then
-	wc -l $(find -name "*.$1")
+	wc -l $(find -name "*.$1") | sort -g
 else
-	wc -l $(find -type f)
+	wc -l $(find -type f) | sort -g
 fi
