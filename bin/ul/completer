@@ -42,3 +42,9 @@ if [ "$1" == "goto" ] || [ "$1" == "-a" ]; then
 	done
 	complete -W "$res" goto
 fi
+
+if [ "$1" == "op" ] || [ "$1" == "-a" ]; then
+	files=$(find -type f)
+	files=$(sed "s/.*\///g" <<< "$files")
+	complete -W "$files" op
+fi

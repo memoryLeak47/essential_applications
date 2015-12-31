@@ -12,7 +12,6 @@ do
 	fi
 done
 
-
-numres=$(echo "$results" | wc -l)
+# numres=$(echo "$results" | wc -l)
 
 $ul_editor $results

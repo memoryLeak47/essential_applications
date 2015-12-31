@@ -2,3 +2,4 @@
 
 alias goto=". goto"
 alias setWorkspaces=". setWorkspaces"
+alias completer=". completer"
