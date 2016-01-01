@@ -1,4 +1,21 @@
 #!/bin/bash
 
-echo -e "Public Ip:\t$(dig +short myip.opendns.com @resolver1.opendns.com)"
-echo -e "Private Ip:\t$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')"
+usage="Usage:\tgetip\n\tgetip public\n\tgetip private"
+
+if [ -n "$1" ]; then
+	if [ "$1" == "public" ]; then
+		req 'dig'
+		dig +short myip.opendns.com @resolver1.opendns.com
+		exit
+	elif [ "$1" == "private" ]; then
+		req 'ip'
+		ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/'
+		exit
+	fi
+	echo -e "$usage"
+else
+	req 'dig'
+	req 'ip'
+	echo -e "public:  $(dig +short myip.opendns.com @resolver1.opendns.com)"
+	echo -e "private: $(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')"
+fi

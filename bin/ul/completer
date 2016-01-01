@@ -48,3 +48,7 @@ if [ "$1" == "op" ] || [ "$1" == "-a" ]; then
 	files=$(sed "s/.*\///g" <<< "$files")
 	complete -W "$files" op
 fi
+
+if [ "$1" == "getip" ] || [ "$1" == "-a" ]; then
+	complete -W "public private" getip
+fi
