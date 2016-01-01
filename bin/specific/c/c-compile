@@ -3,7 +3,7 @@
 req "gcc"
 req "find"
 
-clear
+reset
 
 files=$(find -type f -name "*.c")
 compilable=
