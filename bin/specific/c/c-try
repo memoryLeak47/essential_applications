@@ -3,7 +3,7 @@
 req "gcc"
 req "$ul_editor"
 
-tput reset
+clear
 
 if [ a$1 == 'a-n' ]; then
 	echo -e "\n\nint main()\n{\n\treturn 0;\n}" >  $ul_localresdir/CTry.c

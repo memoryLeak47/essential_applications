@@ -3,7 +3,7 @@
 req "javac"
 req "xargs"
 
-tput reset
+clear
 
 if [ ! -d "src" ]; then
 	echo "theres no src directory...";

@@ -4,7 +4,7 @@ req "javac"
 req "java"
 req "$ul_editor"
 
-tput reset
+clear
 
 filename="JavaTry"
 srcfile="$ul_localresdir/JavaTry.java"

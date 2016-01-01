@@ -1,11 +1,11 @@
 #!/bin/bash
 
-req "g++"
-req "libsfml-dev"
+req "gcc"
+req "find"
 
-tput reset
+clear
 
-files=`tree -f -i -P "*.cpp" --noreport`
+files=$(find -type f -name "*.c")
 compilable=
 c=0
 for file in $files
@@ -15,8 +15,8 @@ do
 	let "c++"
 	fi
 done
-g++ -O2 -g -Wfatal-errors -c $compilable
-g++ *.o -o exe -lsfml-window -lsfml-system -lsfml-graphics -std=c++11
+gcc -O2 -g -Wall -c $compilable
+gcc *.o -o exe
 ls *.o
 rm *.o 2>/dev/null
 echo

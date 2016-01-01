@@ -1,9 +1,10 @@
 #!/bin/bash
 
 req "g++"
+req "libsfml-dev"
 req "$ul_editor"
 
-tput reset
+clear
 
 if [ a$1 == 'a-n' ]; then
 	echo -e "#include <iostream>\n#define con(x) std::cout << x << std::endl\n\nint main()\n{\n\treturn 0;\n}" >  $ul_localresdir/CppTry.cpp
@@ -13,7 +14,7 @@ if [ ! a$1 == 'a-r' ]; then
 fi
 g++ -O2 -g -Wall -c $ul_localresdir/CppTry.cpp -o $ul_localresdir/CppTry.o
 if [ -f $ul_localresdir/CppTry.o ]; then
-	g++ $ul_localresdir/CppTry.o -o $ul_localresdir/CppTry
+	g++ $ul_localresdir/CppTry.o -o $ul_localresdir/CppTry -lsfml-window -lsfml-system -lsfml-graphics
 	rm $ul_localresdir/CppTry.o
 fi
 if [ -f $ul_localresdir/CppTry ]; then

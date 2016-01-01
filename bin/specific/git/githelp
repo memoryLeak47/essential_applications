@@ -1,0 +1,44 @@
+#!/bin/bash
+
+req 'git'
+
+usage="Usage:\tgithelp -a <msg>\n\tgithelp -c\n\tgithelp -l\n\tgithelp -d"
+gitroot=$(git rev-parse --show-toplevel)
+
+if [ ! $? == 0 ]; then # if this is not a git-dir
+	exit # exit
+fi
+
+commitdir="$ul_localresdir/githelp/$gitroot"
+
+if [ ! -d "$commitdir" ]; then
+	mkdir -p "$commitdir"
+fi
+
+commitfile="$commitdir/commitfile"
+
+if [ ! -d "$commitdir" ]; then
+	mkdir "$commitdir"
+fi
+
+if [ -n "$1" ]; then
+	if [ "$1" == "-a" ]; then
+		echo "$2; " >> $commitfile
+		exit
+	fi
+	if [ "$1" == "-c" ]; then
+		msg=$(echo $(cat $commitfile))
+		git add -A; git commit -m "$msg"
+		rm "$commitfile"
+		exit
+	fi
+	if [ "$1" == "-l" ]; then
+		cat $commitfile
+		exit
+	fi
+	if [ "$1" == "-d" ]; then
+		rm "$commitfile"
+	fi
+	echo -e "$usage"
+fi
+

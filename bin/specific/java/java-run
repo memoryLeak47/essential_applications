@@ -3,8 +3,6 @@
 req "cat"
 req "java"
 
-tput reset
-
 usage="Usage:\tjavaRun [-p path] [args]"
 mp=
 
