@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ~/.utils-library/bin/ul/init-ul
+. "$(cat ~/.ul-root)/bin/ul/init-ul"
 
 export proj="/home/$USER/projects"
 
