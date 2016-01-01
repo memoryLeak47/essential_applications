@@ -12,6 +12,7 @@ ulimit -c unlimited
 
 c() { cd $*; ls --color=auto; }
 alias sl="echo 'corrected to ls'; ls"
+alias reset="tput reset"
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)

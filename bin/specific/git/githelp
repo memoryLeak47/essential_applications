@@ -9,17 +9,7 @@ if [ ! $? == 0 ]; then # if this is not a git-dir
 	exit # exit
 fi
 
-commitdir="$ul_localresdir/githelp/$gitroot"
-
-if [ ! -d "$commitdir" ]; then
-	mkdir -p "$commitdir"
-fi
-
-commitfile="$commitdir/commitfile"
-
-if [ ! -d "$commitdir" ]; then
-	mkdir "$commitdir"
-fi
+commitfile="$gitroot/.githelp-commitinfo"
 
 if [ -n "$1" ]; then
 	if [ "$1" == "-a" ]; then
@@ -28,8 +18,8 @@ if [ -n "$1" ]; then
 	fi
 	if [ "$1" == "-c" ]; then
 		msg=$(echo $(cat $commitfile))
-		git add -A; git commit -m "$msg"
 		rm "$commitfile"
+		git add -A; git commit -m "$msg"
 		exit
 	fi
 	if [ "$1" == "-l" ]; then
@@ -38,6 +28,7 @@ if [ -n "$1" ]; then
 	fi
 	if [ "$1" == "-d" ]; then
 		rm "$commitfile"
+		exit
 	fi
 	echo -e "$usage"
 fi
