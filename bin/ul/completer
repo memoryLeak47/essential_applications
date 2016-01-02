@@ -36,7 +36,7 @@ if [ "$1" == "goto" ] || [ "$1" == "-a" ]; then
 
 	tmp=$(cat $ul_localresdir/gotolib)
 	res=
-	for ok in $tmp
+	for ok in "$tmp"
 	do
 		res="$res ${ok%:*}"
 	done
@@ -51,4 +51,18 @@ fi
 
 if [ "$1" == "getip" ] || [ "$1" == "-a" ]; then
 	complete -W "public private" getip
+fi
+
+if [ "$1" == "cmd" ] || [ "$1" == "-a" ]; then
+	if [ ! -f $ul_localresdir/cmdlib ] ; then
+		touch $ul_localresdir/cmdlib
+	fi
+
+	tmp=$(cat $ul_localresdir/cmdlib)
+	res=
+	for ok in "$tmp"
+	do
+		res="$res ${ok%%:*}"
+	done
+	complete -W "$res" cmd
 fi
