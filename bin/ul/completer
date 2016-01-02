@@ -49,6 +49,12 @@ if [ "$1" == "op" ] || [ "$1" == "-a" ]; then
 	complete -W "$files" op
 fi
 
+if [ "$1" == "opd" ] || [ "$1" == "-a" ]; then
+	files=$(find -type d)
+	files=$(sed "s/.*\///g" <<< "$files")
+	complete -W "$files" opd
+fi
+
 if [ "$1" == "getip" ] || [ "$1" == "-a" ]; then
 	complete -W "public private" getip
 fi
