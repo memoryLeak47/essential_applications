@@ -1,5 +1,6 @@
 #!/bin/bash
 
 alias goto=". goto"
+alias cmd=". cmd"
 alias setWorkspaces=". setWorkspaces"
 alias completer=". completer"

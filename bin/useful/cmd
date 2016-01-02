@@ -1,0 +1,47 @@
+#!/bin/bash
+
+req 'grep'
+req 'sed'
+
+libpath="$ul_localresdir/cmdlib"
+usage="Usage:\tcmd -n <id> <command>\n\tcmd <id>\n\tcmd -l\n\tcmd -d <id>"
+
+if [ ! -f "$libpath" ]; then
+	touch "$libpath"
+fi
+
+if [ -z "$1" ]; then
+	echo -e "$usage"
+	return
+fi
+
+if [ "$1" == "-l" ]; then
+	while read LINE
+	do
+		printf ${LINE%%:*}
+		printf " -> "
+		printf "${LINE#*:}"
+		echo
+	done < $libpath
+elif [ "$1" == "-n" ]; then
+	if [ -n "$3" ]; then # TODO missing: error if ID already defined
+		echo "$2:$3" >> $libpath
+	else
+		echo "cmd: Too few arguments | cmd -n <id> <path>"
+	fi
+elif [ "$1" == "-d" ]; then
+	if [ -n "$2" ]; then
+		sed -i "/^$2:.*/d" "$libpath"
+	else
+		echo "cmd: Too few arguments | cmd -d <id>"
+	fi
+else
+	id=$1
+	line=$(grep "$id:" $libpath)
+	line=${line#*:}
+	if [ -n "$line" ]; then
+		eval "$line" # not the same as: $line
+	else
+		echo "id '$1' not found"
+	fi
+fi
