@@ -3,7 +3,7 @@
 req "xargs"
 req "$ul_editor"
 
-tmp=$(find -name "$1")
+tmp=$(find -name "$1" -type f)
 
 for file in $tmp
 do

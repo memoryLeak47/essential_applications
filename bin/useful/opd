@@ -1,0 +1,16 @@
+#!/bin/bash
+
+req "xargs"
+req "$ul_editor"
+
+results=$(find -name "$1" -type d)
+
+numres=$(echo "$results" | wc -l)
+if [ $numres -gt 1 ]; then
+	echo "too many results: $numres"
+	echo $results
+else
+	cd $results
+fi
+
+

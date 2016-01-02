@@ -2,5 +2,6 @@
 
 alias goto=". goto"
 alias cmd=". cmd"
-alias setWorkspaces=". setWorkspaces"
+alias opd=". opd"
+alias set-workspaces=". set-workspaces"
 alias completer=". completer"
