@@ -30,6 +30,6 @@ if [ -n "$1" ]; then
 		rm "$commitfile"
 		exit
 	fi
-	echo -e "$usage"
 fi
+echo -e "$usage"
 
