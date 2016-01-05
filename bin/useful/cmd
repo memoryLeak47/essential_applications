@@ -37,10 +37,10 @@ elif [ "$1" == "-d" ]; then
 	fi
 else
 	id=$1
-	line=$(grep "$id:" $libpath)
-	line=${line#*:}
+	line=$(grep "$id:" "$libpath")
+	line=${line##*:}
 	if [ -n "$line" ]; then
-		eval "$line" # not the same as: $line
+		eval "${line}" # not the same as: $line
 	else
 		echo "id '$1' not found"
 	fi
