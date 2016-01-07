@@ -1,0 +1,14 @@
+#!/bin/bash
+
+req "$ul_browser"
+req "$ul_editor"
+
+reset
+
+if [ "$1" == '-n' ]; then
+	echo -e "<!DOCTYPE html>\n<html>\n\t<head>\n\t</head>\n\t<body>\n\t</body>\n</html>" >  $ul_localresdir/html-try.html
+fi
+if [ ! "$1" == '-r' ]; then
+	$ul_editor $ul_localresdir/html-try.html
+fi
+$ul_browser $ul_localresdir/html-try.html

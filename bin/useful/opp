@@ -1,0 +1,16 @@
+#!/bin/bash
+
+req 'op'
+req 'find'
+
+files=$(grep -r -s -l "$1")
+results=
+
+for file in $files
+do
+	if [ $(filetype $file) == "text" ]; then
+		results="$results $file"
+	fi
+done
+
+$ul_editor $results

@@ -7,10 +7,6 @@ if [ -z "$1" ]; then
 	exit
 fi
 
-if [ "$1" == "sc" ] || [ "$1" == "-a" ]; then
-	complete -W "j jc jr c cc cr cpp cppc cppr" sc
-fi
-
 if [ "$1" == "cb" ] || [ "$1" == "-a" ]; then
 	if [ ! -d "$ul_localresdir/cb" ]; then
 		mkdir $ul_localresdir/cb

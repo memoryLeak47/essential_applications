@@ -1,0 +1,15 @@
+#!/bin/bash
+
+req "$ul_browser"
+
+usage="html-run <file.html>"
+
+if [ -n "$1" ]; then
+	if [ -f "$1" ]; then
+		$ul_browser "$1"
+	else
+		echo "can't find file $1"
+	fi
+else
+	echo -e "$usage"
+fi
