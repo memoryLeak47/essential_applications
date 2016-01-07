@@ -1,0 +1,16 @@
+#!/bin/bash
+
+req "$ul_browser"
+req "$ul_editor"
+req "markdown"
+
+reset
+
+if [ "$1" == '-n' ]; then
+	echo -e "" >  $ul_localresdir/md-try.md
+fi
+if [ ! "$1" == '-r' ]; then
+	$ul_editor $ul_localresdir/md-try.md
+fi
+markdown $ul_localresdir/md-try.md > $ul_tmpdir/md-try.html
+$ul_browser $ul_tmpdir/md-try.html

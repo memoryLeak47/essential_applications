@@ -11,11 +11,11 @@ srcfile="$ul_localresdir/JavaTry.java"
 binfile="$ul_localresdir/JavaTry.class"
 dir="$ul_localresdir"
 
-if [ a$1 == 'a-n' ] || [ ! -f "$srcfile" ]; then
+if [ "$1" == '-n' ] || [ ! -f "$srcfile" ]; then
 	echo -e "class JavaTry\n{\n\tstatic public void main(String args[])\n\t{\n\t\t\n\t}\n}" > "$srcfile"
 fi
 
-if [ ! a$1 == 'a-r' ]; then
+if [ ! "$1" == '-r' ]; then
 	$ul_editor $srcfile
 	javac $srcfile
 fi

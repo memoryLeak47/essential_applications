@@ -5,10 +5,10 @@ req "$ul_editor"
 
 reset
 
-if [ a$1 == 'a-n' ]; then
+if [ "$1" == '-n' ]; then
 	echo -e "#include <iostream>\n#define con(x) std::cout << x << std::endl\n\nint main()\n{\n\treturn 0;\n}" >  $ul_localresdir/CppTry.cpp
 fi
-if [ ! a$1 == 'a-r' ]; then
+if [ ! "$1" == '-r' ]; then
 	$ul_editor $ul_localresdir/CppTry.cpp
 fi
 g++ -O2 -g -Wall -c $ul_localresdir/CppTry.cpp -o $ul_localresdir/CppTry.o

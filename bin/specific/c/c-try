@@ -5,10 +5,10 @@ req "$ul_editor"
 
 reset
 
-if [ a$1 == 'a-n' ]; then
+if [ "$1" == '-n' ]; then
 	echo -e "\n\nint main()\n{\n\treturn 0;\n}" >  $ul_localresdir/CTry.c
 fi
-if [ ! a$1 == 'a-r' ]; then
+if [ ! "$1" == '-r' ]; then
 	$ul_editor $ul_localresdir/CTry.c
 fi
 gcc -O2 -g -Wall -c $ul_localresdir/CTry.c -o $ul_localresdir/CTry.o
