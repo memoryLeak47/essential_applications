@@ -2,7 +2,7 @@
 
 req 'git'
 
-usage="Usage:\tgithelp -a <msg>\n\tgithelp -c\n\tgithelp -l\n\tgithelp -d"
+usage="Usage:\tgithelp -a <msg>\n\tgithelp -c\n\tgithelp -l\n\tgithelp -d\n\tgethelp -pull\n\tgithelp -push"
 gitroot=$(git rev-parse --show-toplevel)
 
 if [ ! $? == 0 ]; then # if this is not a git-dir
@@ -30,6 +30,14 @@ if [ -n "$1" ]; then
 		rm "$commitfile"
 		exit
 	fi
-	echo -e "$usage"
+	if [ "$1" == "-pull" ]; then
+		git pull
+		exit
+	fi
+	if [ "$1" == "-push" ]; then
+		git push origin master
+		exit
+	fi
 fi
+echo -e "$usage"
 
