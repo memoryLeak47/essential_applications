@@ -31,7 +31,7 @@ if [ -n "$1" ]; then
 		exit
 	fi
 	if [ "$1" == "-pull" ]; then
-		git pull
+		git pull origin master
 		exit
 	fi
 	if [ "$1" == "-push" ]; then
