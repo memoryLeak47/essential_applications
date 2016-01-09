@@ -21,52 +21,40 @@ def init():
 		classes.append(re.sub("\.java", "", re.sub(".*\/", "", f)))
 		javafiles.append(re.sub("\.java", "", re.sub("/", ".", f))[2:])
 
-def getNeededImports(classname, lines):
-	imports=list()
-	for c in classes:
-		if c != classname:
-			for line in lines:
-				if re.search(r'[^A-Za-z0-9]' + re.escape(c) + r'[^A-Za-z0-9]', line) != None:
-					importstr = "import " + javafiles[classes.index(c)] + ";\n"
-					if not importstr in imports:
-						imports.append(importstr)
-	return imports
+def classToJavafile(classname):
+	return javafiles[classes.index(classname)]
 
-def fixImports(f):
-	importlineposition=2
+def importLineToClassname(line):
+	return re.sub(".*\.", "", line)[:-2]
+
+def getFixedStaticImport(line):
+	return line
+
+def getFixedNormalImport(line):
+	return "import " + classToJavafile(importLineToClassname(line)) + ";"
+
+def getFixedLine(line):
+	if line.startswith("import ") and not line.startswith("import java"):
+		if line.startswith("import static "):
+			return getFixedStaticImport(line) # Falls es ein static import is
+		else:
+			return getFixedNormalImport(line) # Falls es ein normaler Klassen import ist
+	return line
+
+def fixFile(filename):
 	try:
-		fixfile=open(f, "r")
+		f=open(filename, "r+")
 	except:
-		print("Can't open file (reading) " + f)
-		sys.exit()
-	lines=fixfile.readlines()
-	newlines=list()
-	for i in range(0, len(lines)):
-		line=lines[i]
-		if not line.startswith("import"):
-			newlines.append(line)
-		elif line.startswith("import static"):
-			newlines.append(line)
-			importlineposition=i+1
-		elif line.startswith("import java"):
-			newlines.append(line)
-			importlineposition=i+2
-	fixfile.close()
-	try:
-		fixfile=open(f, "w")
-	except:
-		print("Can't open file (writing) " + f)
+		print("Can't open file " + filename)
 		sys.exit()
 
-	for importline in getNeededImports(classes[files.index(f)], newlines):
-		newlines.insert(importlineposition, importline)
+	lines=f.readlines()
 
-	fixfile.writelines(newlines) # write updated stuff to file
-	fixfile.close()
+	f.writelines([getFixedLine(line) for line in lines])
 
-def fixImportsList():
+def fixProject():
 	for f in files:
-		fixImports(f)
+		fixFile(f)
 
 if os.path.isdir(os.getcwd() + "/src"):
 	os.chdir("src")
@@ -76,12 +64,8 @@ else:
 init()
 
 if len(sys.argv) == 1:
-	fixImportsList()
+	fixProject()
 elif len(sys.argv) == 2:
-	try:
-		openfile = open(sys.argv[1])
-	except:
-		print("Can't find file " + sys.argv[1])
-		fixImports(openfile)
+	fixFile(sys.argv[1])
 else:
 	print(usage)
