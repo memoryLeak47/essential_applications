@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+
+import sys
+import os
+import glob
+import fnmatch
+import re
+
+usage="Usasge:\tjimport-man <file>\n\tjimport-man"
+
+classes=list() # ['Main', 'Screen']
+files=list() # ['core/Main.java', 'core/Screen.java']
+javafiles=list() # ['core.Main', 'core.Screen']
+
+def init():
+	for root, dirnames, filenames in os.walk('.'): # define files
+		for filename in fnmatch.filter(filenames, '*.java'):
+			files.append(root +"/" + filename)
+
+	for f in files: # define classes & javafiles
+		classes.append(re.sub("\.java", "", re.sub(".*\/", "", f)))
+		javafiles.append(re.sub("\.java", "", re.sub("/", ".", f))[2:])
+
+
+def fixImports(f):
+	importlineposition=0
+	try:
+		fixfile=open(f, "r")
+	except:
+		print("Can't open file (reading) " + f)
+		sys.exit()
+	lines=fixfile.readlines()
+	newlines=list()
+	for i in range(0, len(lines)):
+		line=lines[i]
+		if not line.startswith("import"):
+			newlines.append(line)
+		elif line.startswith("import static"):
+			newlines.append(line)
+			importlineposition=i
+		elif line.startswith("import java"):
+			newlines.append(line)
+			importlineposition=i+1
+	fixfile.close()
+	try:
+		fixfile=open(f, "w")
+	except:
+		print("Can't open file (writing) " + f)
+		sys.exit()
+
+	for line in newlines: # write updated stuff to file
+		fixfile.write(line)
+	fixfile.close()
+
+def fixImportsList():
+	for f in files:
+		fixImports(f)
+
+if os.path.isdir(os.getcwd() + "/src"):
+	os.chdir("src")
+else:
+	print("You are not in root")
+	sys.exit()
+init()
+
+if len(sys.argv) == 1:
+	fixImportsList()
+elif len(sys.argv) == 2:
+	try:
+		openfile = open(sys.argv[1])
+	except:
+		print("Can't find file " + sys.argv[1])
+		fixImports(openfile)
+else:
+	print(usage)
