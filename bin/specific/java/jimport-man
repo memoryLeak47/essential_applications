@@ -6,7 +6,7 @@ import glob
 import fnmatch
 import re
 
-usage="Usasge:\tjimport-man <file>\n\tjimport-man"
+usage="Usage:\tjimport-man <file>\n\tjimport-man"
 
 classes=list() # ['Main', 'Screen']
 files=list() # ['core/Main.java', 'core/Screen.java']
@@ -25,30 +25,39 @@ def classToJavafile(classname):
 	return javafiles[classes.index(classname)]
 
 def importLineToClassname(line):
-	return re.sub(".*\.", "", line)[:-2]
+	return re.sub(".*\.", "", line.strip())[:-1]
 
 def getFixedStaticImport(line):
 	return line
 
 def getFixedNormalImport(line):
-	return "import " + classToJavafile(importLineToClassname(line)) + ";"
+	return "import " + classToJavafile(importLineToClassname(line)) + ";\n"
 
 def getFixedLine(line):
-	if line.startswith("import ") and not line.startswith("import java"):
-		if line.startswith("import static "):
-			return getFixedStaticImport(line) # Falls es ein static import is
-		else:
-			return getFixedNormalImport(line) # Falls es ein normaler Klassen import ist
+	if "*" in line:
+		print("cant handle da star")
+	else:
+		if line.startswith("import ") and not line.startswith("import java"):
+			if line.startswith("import static "):
+				return getFixedStaticImport(line) # Falls es ein static import is
+			else:
+				return getFixedNormalImport(line) # Falls es ein normaler Klassen import ist
 	return line
 
 def fixFile(filename):
 	try:
-		f=open(filename, "r+")
+		f=open(filename, "r")
 	except:
 		print("Can't open file " + filename)
 		sys.exit()
 
 	lines=f.readlines()
+
+	try:
+		f=open(filename, "w")
+	except:
+		print("Can't open file " + filename)
+		sys.exit()
 
 	f.writelines([getFixedLine(line) for line in lines])
 
