@@ -21,9 +21,19 @@ def init():
 		classes.append(re.sub("\.java", "", re.sub(".*\/", "", f)))
 		javafiles.append(re.sub("\.java", "", re.sub("/", ".", f))[2:])
 
+def getNeededImports(classname, lines):
+	imports=list()
+	for c in classes:
+		if c != classname:
+			for line in lines:
+				if re.search(r'[^A-Za-z0-9]' + re.escape(c) + r'[^A-Za-z0-9]', line) != None:
+					importstr = "import " + javafiles[classes.index(c)] + ";\n"
+					if not importstr in imports:
+						imports.append(importstr)
+	return imports
 
 def fixImports(f):
-	importlineposition=0
+	importlineposition=2
 	try:
 		fixfile=open(f, "r")
 	except:
@@ -37,10 +47,10 @@ def fixImports(f):
 			newlines.append(line)
 		elif line.startswith("import static"):
 			newlines.append(line)
-			importlineposition=i
+			importlineposition=i+1
 		elif line.startswith("import java"):
 			newlines.append(line)
-			importlineposition=i+1
+			importlineposition=i+2
 	fixfile.close()
 	try:
 		fixfile=open(f, "w")
@@ -48,8 +58,10 @@ def fixImports(f):
 		print("Can't open file (writing) " + f)
 		sys.exit()
 
-	for line in newlines: # write updated stuff to file
-		fixfile.write(line)
+	for importline in getNeededImports(classes[files.index(f)], newlines):
+		newlines.insert(importlineposition, importline)
+
+	fixfile.writelines(newlines) # write updated stuff to file
 	fixfile.close()
 
 def fixImportsList():
