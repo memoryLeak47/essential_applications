@@ -66,6 +66,8 @@ case $attack_type in
 		done
 		;;
 	get)
+		echo "Get doesnt work yet. "
+		exit
 		for username in $usernames
 		do
 			for password in $passwords
@@ -79,6 +81,8 @@ case $attack_type in
 		done
 		;;
 	post)
+		echo "Post doesnt work yet. "
+		exit
 		for username in $usernames
 		do
 			for password in $passwords
