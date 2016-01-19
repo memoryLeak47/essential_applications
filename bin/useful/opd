@@ -9,6 +9,8 @@ numres=$(echo "$results" | wc -l)
 if [ $numres -gt 1 ]; then
 	echo "too many results: $numres"
 	echo $results
+elif [ -z "$results" ]; then
+	echo "no folder \"$1\" found"
 else
 	cd $results
 fi
