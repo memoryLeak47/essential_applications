@@ -1,7 +1,6 @@
 #!/bin/bash
 
 req "g++"
-req "libsfml-dev"
 req "$ul_editor"
 
 reset
