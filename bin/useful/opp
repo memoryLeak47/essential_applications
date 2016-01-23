@@ -3,7 +3,14 @@
 req 'op'
 req 'find'
 
-files=$(grep -r -s -l "$1")
+usage="Usage:\topp [-r] <PATTERN>"
+
+if [ "$1" = "-r" ]; then
+	regex="-E"
+	shift
+fi
+
+files=$(grep -r -s -l $regex "$1")
 results=
 
 for file in $files
