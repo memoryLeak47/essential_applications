@@ -59,7 +59,11 @@ def fixFile(filename):
 		print("Can't open file " + filename)
 		sys.exit()
 
-	f.writelines([getFixedLine(line) for line in lines])
+	try:
+		f.writelines([getFixedLine(line) for line in lines])
+	except:
+		print("error in " + filename)
+		f.writelines(lines)
 
 def fixProject():
 	for f in files:
