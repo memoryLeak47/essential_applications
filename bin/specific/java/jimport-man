@@ -25,6 +25,12 @@ def classToJavafile(classname):
 	return javafiles[classes.index(classname)]
 
 def importLineToClassname(line):
+	
+	if "//" in line:
+		line = line[:line.find("//")]
+	if "/*" in line: # not even needed because lines with * are ignored
+		line = line[:line.find("/*")]
+	
 	return re.sub(".*\.", "", line.strip())[:-1]
 
 def getFixedStaticImport(line):
@@ -34,9 +40,7 @@ def getFixedNormalImport(line):
 	return "import " + classToJavafile(importLineToClassname(line)) + ";\n"
 
 def getFixedLine(line):
-	if "*" in line:
-		print("cant handle da star")
-	else:
+	if not "*" in line:
 		if line.startswith("import ") and not line.startswith("import java"):
 			if line.startswith("import static "):
 				return getFixedStaticImport(line) # Falls es ein static import is
