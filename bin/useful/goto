@@ -27,7 +27,7 @@ if [ $1 == "-n" ]; then
 	if [ -n "$3" ]; then # TODO missing: error if ID already defined
 		echo "$2:$3" >> $libpath
 	else
-		echo "goto: Too few arguments | goto -n <id> <path>"
+		echo "$2:$PWD" >> $libpath
 	fi
 else
 	id=$1
