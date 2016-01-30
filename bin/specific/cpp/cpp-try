@@ -11,9 +11,9 @@ fi
 if [ ! "$1" == '-r' ]; then
 	$ul_editor $ul_localresdir/CppTry.cpp
 fi
-g++ -O2 -g -Wall -c $ul_localresdir/CppTry.cpp -o $ul_localresdir/CppTry.o
+g++ -O2 -g -Wall -c $ul_localresdir/CppTry.cpp -o $ul_localresdir/CppTry.o -std=c++11
 if [ -f $ul_localresdir/CppTry.o ]; then
-	g++ $ul_localresdir/CppTry.o -o $ul_localresdir/CppTry
+	g++ $ul_localresdir/CppTry.o -o $ul_localresdir/CppTry -std=c++11
 	rm $ul_localresdir/CppTry.o
 fi
 if [ -f $ul_localresdir/CppTry ]; then
