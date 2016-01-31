@@ -1,0 +1,5 @@
+#!/bin/bash
+
+name=$(basename $1)
+echo -e "#ifndef __${name^^}_CLASS__\n#define __${name^^}_CLASS__\n\nclass $name\n{\n};\n\n#endif" > "${1}.h"
+$ul_editor "${1}.h"
