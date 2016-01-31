@@ -1,6 +1,6 @@
 #!/bin/bash
 
 name=$(basename $1)
-echo -e "#ifndef __${name^^}_CLASS__\n#define __${name^^}_CLASS__\n\nclass $name\n{\n};\n\n#endif" > "${1}.h"
-echo -e "#include \"${name}.h\"" > "${1}.cpp"
-$ul_editor "${1}.h" "${1}.cpp"
+echo -e "#ifndef __${name^^}_CLASS__\n#define __${name^^}_CLASS__\n\nclass $name\n{\n};\n\n#endif" > "${1}.hpp"
+echo -e "#include \"${name}.hpp\"" > "${1}.cpp"
+$ul_editor "${1}.hpp" "${1}.cpp"
