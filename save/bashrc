@@ -10,7 +10,6 @@ export ul_terminal_browser=w3m
 
 ulimit -c unlimited
 
-c() { cd $*; ls --color=auto; }
 alias sl="echo 'corrected to ls'; ls"
 alias reset="tput reset"
 
