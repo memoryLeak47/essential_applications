@@ -7,6 +7,14 @@ if [ -z "$1" ]; then
 	exit
 fi
 
+if [ "$1" == "set-keymap" ] || [ "$1" == "-a" ]; then
+	complete -W "$(ls $ul_resdir/keymaps/)" "set-keymap"
+fi
+
+if [ "$1" == "set-keybind" ] || [ "$1" == "-a" ]; then
+	complete -W "$(ls $ul_resdir/keybinds/)" "set-keybind"
+fi
+
 if [ "$1" == "cb" ] || [ "$1" == "-a" ]; then
 	if [ ! -d "$ul_localresdir/cb" ]; then
 		mkdir $ul_localresdir/cb
