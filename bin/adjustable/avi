@@ -1,0 +1,7 @@
+#!/bin/bash
+
+[ -f $ul_localresdir/pre-avi ] && $ul_localresdir/pre-avi $*
+
+$ul_editor $*
+
+[ -f $ul_localresdir/post-avi ] && $ul_localresdir/post-avi $*

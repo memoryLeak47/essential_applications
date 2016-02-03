@@ -1,10 +1,10 @@
 #!/bin/bash
 
-usage="Usage:\tcompleter -a\n\tcompleter <binfile>"
+usage="Usage:\tcompleter -a\t\t-> complete all\n\tcompleter -p\t\t-> complete all path-dependent\n\tcompleter <binfile>"
 
 if [ -z "$1" ]; then
 	echo -e "$usage"
-	exit
+	return
 fi
 
 if [ "$1" == "set-keymap" ] || [ "$1" == "-a" ]; then
@@ -47,13 +47,13 @@ if [ "$1" == "goto" ] || [ "$1" == "-a" ]; then
 	complete -W "$res" goto
 fi
 
-if [ "$1" == "op" ] || [ "$1" == "-a" ]; then
+if [ "$1" == "op" ] || [ "$1" == "-a" ] || [ "$1" == "-p" ]; then
 	files=$(find -type f)
 	files=$(sed "s/.*\///g" <<< "$files")
 	complete -W "$files" op
 fi
 
-if [ "$1" == "opd" ] || [ "$1" == "-a" ]; then
+if [ "$1" == "opd" ] || [ "$1" == "-a" ] || [ "$1" == "-p" ]; then
 	files=$(find -type d)
 	files=$(sed "s/.*\///g" <<< "$files")
 	complete -W "$files" opd
