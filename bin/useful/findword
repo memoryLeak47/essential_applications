@@ -14,9 +14,9 @@ shift
 
 if [ -n "$1" ]; then
 	if [ -f "$1" ]; then
-		grep "$word" --with-filename -n $@ --color=always
+		grep -E "$word" --with-filename -n $@ --color=always
 	elif [ -d "$1" ]; then
-		grep "$word" -r --with-filename -n $1/* --color=always
+		grep -E "$word" -r --with-filename -n $1/* --color=always
 	else
 		echo "can't find '$1'."
 	fi
