@@ -1,7 +1,6 @@
 #!/bin/bash
 
 req "javac"
-req "xargs"
 
 reset
 
@@ -16,4 +15,4 @@ if [ ! -d "bin" ]; then
 else
 	rm -r bin/* 2>/dev/null
 fi
-find "src" -name "*.java" | xargs javac -d "bin" -sourcepath "src"
+javac -d "bin" -sourcepath "src" $(find "src" -name "*.java")
