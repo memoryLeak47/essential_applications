@@ -1,6 +1,5 @@
 #!/bin/bash
 
-req "xargs"
 req "$ul_editor"
 
 results=$(find -name "$1" -type d)
