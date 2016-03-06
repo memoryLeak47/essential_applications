@@ -1,0 +1,12 @@
+#!/bin/bash
+
+req "python"
+req "$ul_editor"
+
+reset
+
+if [ "$1" == '-n' ]; then
+	echo "" >  $ul_localresdir/PyTry.py
+fi
+$ul_editor $ul_localresdir/PyTry.py
+python $ul_localresdir/PyTry.py
