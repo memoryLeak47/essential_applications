@@ -4,10 +4,11 @@ req "g++"
 
 reset
 
-if [ -z "$*" ]; then
+if [ -z "$1" ]; then
 	files=$(find -name "*.cpp" -type f)
 else
-	files="$*"
+	files=$(find -name "${1}.cpp")
+	echo "only compiling $files"
 fi
 
 g++ -O2 -g -Wfatal-errors -c $files -lsfml-window -lsfml-system -lsfml-graphics -lsfml-network -std=c++11
