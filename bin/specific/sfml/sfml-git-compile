@@ -1,0 +1,10 @@
+#!/bin/bash
+
+req "g++"
+
+reset
+
+files=$(git ls-files --modified)
+
+g++ -O2 -g -Wfatal-errors -c $files -lsfml-window -lsfml-system -lsfml-graphics -lsfml-network -std=c++11
+g++ *.o -o exe -lsfml-window -lsfml-system -lsfml-graphics -lsfml-network -std=c++11
