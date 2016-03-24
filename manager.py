@@ -6,7 +6,10 @@ def getConfigFilePath():
 	return os.path.expanduser("~") + "/.ul-config"
 
 def getULRoot():
-	print("nop")
+	config = open(getConfigFilePath())
+	line = config.readlines()[0]
+	config.close()
+	return line
 	
 def setULRoot(root):
 	print("ULRoot set to: " + root)
