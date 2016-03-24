@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 
 import os
-import sys
+import manager
 
-config = open(os.path.expanduser("~") + "/.ul-config", "w")
-config.write("root=" + os.path.realpath(os.path.dirname(__file__)))
-config.close()
-
+manager.setULRoot(os.path.realpath(os.path.expanduser(".")))
