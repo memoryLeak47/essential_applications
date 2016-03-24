@@ -1,3 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env python3
 
-echo $(readlink -f .) > ~/.ul-root
+import os
+import sys
+
+config = open(os.path.expanduser("~") + "/.ul-config", "w")
+config.write("root=" + os.path.realpath(os.path.dirname(__file__)))
+config.close()
+
