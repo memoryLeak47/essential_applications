@@ -1,7 +1,7 @@
 #!/bin/bash
 
 libpath="$ul_localresdir/gotolib"
-usage="Usage:\tgoto -n <id> <path>\n\tgoto <id>\n\tgoto -l"
+usage="Usage:\tgoto -n <id> <path>\n\tgoto -n <id>\n\tgoto <id>\n\tgoto -l"
 
 if [ ! -f "$libpath" ]; then
 	touch "$libpath"
