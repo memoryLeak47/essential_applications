@@ -13,11 +13,19 @@ def getULRoot():
 	
 def setULRoot(root):
 	print("ULRoot set to: " + root)
-	config = open(getConfigFilePath())
-	lines = config.readlines()
-	lines[0] = root
-	config.close()
-	config = open(getConfigFilePath(), "w")
-	config.writelines(lines)
-	config.close()
+	if os.path.isfile(getConfigFilePath()):
+		config = open(getConfigFilePath())
+		lines = config.readlines()
+		if len(lines) != 0:
+			lines[0] = root + "\n"
+		else:
+			lines.append(root + "\n")
+		config.close()
+		config = open(getConfigFilePath(), "w")
+		config.writelines(lines)
+		config.close()
+	else:
+		config = open(getConfigFilePath(), "w")
+		config.writelines(root + "\n")
+		config.close()
 	

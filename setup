@@ -1,6 +1,7 @@
 #!/usr/bin/python3.4 -B
 
 import os
+import sys
 import manager
 
-manager.setULRoot(os.path.realpath(os.path.expanduser(".")))
+manager.setULRoot(os.path.realpath(os.path.dirname(sys.argv[0])))
