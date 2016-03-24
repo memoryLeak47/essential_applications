@@ -2,6 +2,8 @@
 
 import os
 import sys
+
+sys.path.append(sys.path[0] + "/bin/ul")
 import manager
 
-manager.setULRoot(os.path.realpath(os.path.dirname(sys.argv[0])))
+manager.setULRoot(sys.path[0])

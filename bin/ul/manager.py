@@ -10,7 +10,7 @@ def getULRoot():
 	line = config.readlines()[0]
 	config.close()
 	return line
-	
+
 def setULRoot(root):
 	print("ULRoot set to: " + root)
 	if os.path.isfile(getConfigFilePath()):
@@ -28,4 +28,4 @@ def setULRoot(root):
 		config = open(getConfigFilePath(), "w")
 		config.writelines(root + "\n")
 		config.close()
-	
+
