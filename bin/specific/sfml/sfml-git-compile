@@ -1,10 +1,19 @@
 #!/bin/bash
 
 req "g++"
+req "expr"
 
 reset
 
 files=$(git ls-files --modified)
+filtered=
 
-g++ -O2 -g -Wfatal-errors -c $files -lsfml-window -lsfml-system -lsfml-graphics -lsfml-network -std=c++11
+for i in files
+do
+	if [ $(expr match "$1" ".*.cpp") != 0 ]; then
+		filtered=$filtered$i;
+	fi
+done
+
+g++ -O2 -g -Wfatal-errors -c $filtered -lsfml-window -lsfml-system -lsfml-graphics -lsfml-network -std=c++11
 g++ *.o -o exe -lsfml-window -lsfml-system -lsfml-graphics -lsfml-network -std=c++11
