@@ -22,7 +22,7 @@ else
 				files="$files $file"
 			fi
 		done
-		if [ -z $files ]; then
+		if [ -z "$files" ]; then
 			echo "No modified files found."
 			exit
 		fi
