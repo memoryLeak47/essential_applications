@@ -1,15 +1,34 @@
 #!/bin/bash
 
 req "gcc"
-req "find"
 
 reset
 
-if [ -z "$*" ]; then
+usage="Usage:\tc-compile -g\n\t c-compile <file-identifier>"
+
+if [ -z "$1" ]; then
 	files=$(find -name "*.c" -type f)
 else
-	files="$*"
+	if [ -f "$1" ]; then
+		files=$1
+	elif [ -f "${1}.c" ]; then
+		files="${1}.c"
+	elif [ "$1" == "-g" ]; then
+		req 'git'
+		files=$(git ls-files --modified)
+	else
+		req 'find'
+		files=$(find -name "${1}.c")$(find -name $1)
+		if [ -z "$files" ]; then
+			echo "$usage"
+			exit
+		fi
+	fi
 fi
 
-gcc -O2 -g -Wall -c $compilable
-gcc *.o -o exe
+gcc -O2 -g -Wall -c $files
+if [ ! -d "bin" ]; then
+	mkdir bin
+fi
+mv *.o bin
+gcc bin/*.o -o exe
