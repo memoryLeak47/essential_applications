@@ -4,12 +4,31 @@ req "g++"
 
 reset
 
+usage="Usage:\tcpp-compile -g\n\tcpp-compile <ClassName>\n\tcpp-compile <file>"
+
 if [ -z "$1" ]; then
 	files=$(find -name "*.cpp" -type f)
 else
-	files=$(find -name "${1}.cpp")
-	echo "only compiling $files"
+	if [ -f "$1" ]; then
+		files=$1
+	elif [ -f "${1}.cpp" ]; then
+		files="${1}.cpp"
+	elif [ "$1" == "-g" ]; then
+		req 'git'
+		files=$(git ls-files --modified)
+	else
+		req 'find'
+		files=$(find -name "${1}.cpp")$(find -name $1)
+		if [ -z "$files" ]; then
+			echo "$usage"
+			exit
+		fi
+	fi
 fi
 
 g++ -O2 -g -Wfatal-errors -c $files -std=c++11
-g++ *.o -o exe -std=c++11
+if [ ! -d "bin" ]; then
+	mkdir bin
+fi
+mv *.o bin
+g++ bin/*.o -o exe -std=c++11
