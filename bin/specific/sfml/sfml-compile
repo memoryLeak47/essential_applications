@@ -15,7 +15,17 @@ else
 		files="${1}.cpp"
 	elif [ "$1" == "-g" ]; then
 		req 'git'
-		files=$(git ls-files --modified)
+		tmp=$(git ls-files --modified)
+		for file in $tmp
+		do
+			if [ $(expr match $file ".*\.cpp") != 0 ]; then
+				files="$files $file"
+			fi
+		done
+		if [ -z $files ]; then
+			echo "No modified files found."
+			exit
+		fi
 	else
 		req 'find'
 		files=$(find -name "${1}.cpp")$(find -name $1)
