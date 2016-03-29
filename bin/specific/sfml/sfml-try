@@ -6,17 +6,17 @@ req "$ul_editor"
 reset
 
 if [ "$1" == '-n' ]; then
-	echo -e "#include <iostream>\n#define con(x) std::cout << x << std::endl\n\nint main()\n{\n\treturn 0;\n}" >  $ul_localresdir/CppTry.cpp
+	echo -e "#include <iostream>\n#define con(x) std::cout << x << std::endl\n\nint main()\n{\n\treturn 0;\n}" >  $ul_localresdir/SfmlTry.cpp
 fi
 if [ ! "$1" == '-r' ]; then
-	$ul_editor $ul_localresdir/CppTry.cpp
+	$ul_editor $ul_localresdir/SfmlTry.cpp
 fi
-g++ -O2 -g -Wall -c $ul_localresdir/CppTry.cpp -o $ul_localresdir/CppTry.o -lsfml-window -lsfml-system -lsfml-graphics -lsfml-network -std=c++11
-if [ -f $ul_localresdir/CppTry.o ]; then
-	g++ $ul_localresdir/CppTry.o -o $ul_localresdir/CppTry -lsfml-window -lsfml-system -lsfml-graphics -lsfml-network -std=c++11
-	rm $ul_localresdir/CppTry.o
+g++ -O2 -g -Wall -c $ul_localresdir/SfmlTry.cpp -o $ul_localresdir/SfmlTry.o -lsfml-window -lsfml-system -lsfml-graphics -lsfml-network -std=c++11
+if [ -f $ul_localresdir/SfmlTry.o ]; then
+	g++ $ul_localresdir/SfmlTry.o -o $ul_localresdir/SfmlTry -lsfml-window -lsfml-system -lsfml-graphics -lsfml-network -std=c++11
+	rm $ul_localresdir/SfmlTry.o
 fi
-if [ -f $ul_localresdir/CppTry ]; then
-	$ul_localresdir/CppTry
-	rm $ul_localresdir/CppTry
+if [ -f $ul_localresdir/SfmlTry ]; then
+	$ul_localresdir/SfmlTry
+	rm $ul_localresdir/SfmlTry
 fi
