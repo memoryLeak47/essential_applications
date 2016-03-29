@@ -36,7 +36,7 @@ else
 	fi
 fi
 
-g++ -O2 -g -Wfatal-errors -c $files -std=c++11
+g++ -O2 -g -Wall -c $files -std=c++11
 if [ ! -d "bin" ]; then
 	mkdir bin
 fi
