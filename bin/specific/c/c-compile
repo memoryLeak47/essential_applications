@@ -18,7 +18,7 @@ else
 		tmp=$(git ls-files --modified)
 		for file in $tmp
 		do
-			if [ $(expr match $file ".*\.c") != 0 ];
+			if [ $(expr match $file ".*\.c") != 0 ]; then
 				files="$files $file"
 			fi
 		done
