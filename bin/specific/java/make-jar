@@ -1,0 +1,15 @@
+#!/bin/bash
+
+req 'jar'
+
+mkdir foldy
+cp -r bin/* foldy
+cp -r res/ foldy
+cd foldy
+
+echo "Main-Class: core.Main" > manifest.txt # TODO
+
+jar cvfm classes.jar manifest.txt $(find -name "*.class")
+mv classes.jar ..
+cd ..
+# rm -r foldy
