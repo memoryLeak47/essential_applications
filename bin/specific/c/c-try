@@ -13,7 +13,7 @@ if [ ! "$1" == '-r' ]; then
 fi
 gcc -O2 -g -Wall -c $ul_localresdir/CTry.c -o $ul_localresdir/CTry.o
 if [ -f $ul_localresdir/CTry.o ]; then
-	gcc $ul_localresdir/CTry.o -o $ul_localresdir/CTry -lsfml-window -lsfml-system -lsfml-graphics
+	gcc $ul_localresdir/CTry.o -o $ul_localresdir/CTry
 	rm $ul_localresdir/CTry.o
 fi
 if [ -f $ul_localresdir/CTry ]; then
