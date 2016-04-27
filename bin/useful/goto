@@ -1,7 +1,7 @@
 #!/bin/bash
 
 libpath="$ul_localresdir/gotolib"
-usage="Usage:\tgoto -n <id> <path>\n\tgoto -n <id>\n\tgoto <id>\n\tgoto -l"
+usage="Usage:\tgoto -n <id> <path>\n\tgoto -n <id>\n\tgoto <id>\n\tgoto -l\n\tgoto -w"
 
 if [ ! -f "$libpath" ]; then
 	touch "$libpath"
@@ -21,6 +21,14 @@ if [ $1 == "-l" ]; then
 		echo
 	done < $libpath
 	return
+fi
+
+if [ $1 == "-w" ]; then
+	if [ -f $libpath ]; then
+		vi $libpath
+	else
+		echo "lib \"$libpath\" not found"
+	fi
 fi
 
 if [ $1 == "-n" ]; then
