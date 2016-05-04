@@ -1,4 +1,9 @@
-switch-to-workspace-left=['<Control>H']
-switch-to-workspace-right=['<Control>L']
-switch-to-workspace-up=['<Control>K']
-switch-to-workspace-down=['<Control>J']
+switch-to-workspace-left=['<Alt>H']
+switch-to-workspace-right=['<Alt>L']
+switch-to-workspace-up=['<Alt>K']
+switch-to-workspace-down=['<Alt>J']
+
+move-to-workspace-left=['<Alt><Shift>H']
+move-to-workspace-right=['<Alt><Shift>L']
+move-to-workspace-up=['<Alt><Shift>K']
+move-to-workspace-down=['<Alt><Shift>J']
