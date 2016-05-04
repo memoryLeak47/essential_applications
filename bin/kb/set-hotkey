@@ -1,0 +1,14 @@
+#!/bin/bash
+
+req "gsettings"
+
+if [ -f $ul_resdir/hotkeys/$1 ]; then
+	gsettings reset-recursively org.gnome.desktop.wm.keybindings
+	for line in $(cat $ul_resdir/hotkeys/$1)
+	do
+		gsettings set org.gnome.desktop.wm.keybindings ${line%=*} ${line#*=}
+	done
+else
+	echo "can't find file: $ul_resdir/hotkeys/$1"
+fi
+

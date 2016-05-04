@@ -1,0 +1,4 @@
+switch-to-workspace-left=['<Control>H']
+switch-to-workspace-right=['<Control>L']
+switch-to-workspace-up=['<Control>K']
+switch-to-workspace-down=['<Control>J']
