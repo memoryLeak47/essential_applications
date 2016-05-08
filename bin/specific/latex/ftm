@@ -1,0 +1,10 @@
+#!/bin/bash
+
+pdflatex $1
+if [ "$?" == "0" ]; then
+	gnome-open "./${1%.tex}.pdf"
+	exit $?
+else
+	echo "irgendwas ist schief gelaufen"
+	exit 1
+fi
