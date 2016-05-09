@@ -4,7 +4,8 @@ function updateImage
 {
 	rm $(getImage)
 
-	address="https://duckduckgo.com/?q=$(getText)&iax=1&ia=images&iaf=size%3Al"
+	# address="https://duckduckgo.com/?q=$(getText)&iax=1&ia=images&iaf=size%3Al"
+	address="http://api.duckduckgo.com/?q=$(getText)&format=json&pretty=1"
 	src=$(curl -q $address)
 	imageFile=$(echo $src | awk -F 'duckduckgo.com/i/' '{print $'$(getCount)'}' | cut -d '"' -f 1)
 	setImageFile $imageFile
@@ -15,7 +16,7 @@ function updateImage
 
 function err { echo "nope"; exit; }
 function getCount { echo $(cat $ul_localresdir/wallpaperhino/count); }
-function setCount { echo $1 > $ul_localresdir/wallpaperhino/coun; }
+function setCount { echo $1 > $ul_localresdir/wallpaperhino/count; }
 function setText { echo $1 > $ul_localresdir/wallpaperhino/text; }
 function getText { echo $(cat $ul_localresdir/wallpaperhino/text); }
 function setImageFile { echo $1 > $ul_localresdir/wallpaperhino/imageFile; }
