@@ -1,0 +1,84 @@
+#!/bin/bash
+
+function updateImage
+{
+	rm $(getImage)
+
+	address="https://duckduckgo.com/?q=$(getText)&iax=1&ia=images&iaf=size%3Al&iai=$(getCount)"
+	src=$(curl -q $address)
+	imageFile=$(echo $src | awk -F 'duckduckgo.com/i/' '{print $'$(getCount)'}' | cut -d '"' -f 1)
+	echo imageFile=$imageFile
+	setImageFile $imageFile
+	url="www.duckduckgo.com/i/$imageFile"
+	echo url=$url
+	wget $url -O $(getImage)
+	gsettings set org.gnome.desktop.background picture-uri "file://$(getImage)"
+}
+
+function err
+{
+	echo "nope"
+	exit
+}
+
+function getCount
+{
+	echo $(cat $ul_localresdir/wallpaperhino/count)
+}
+
+function setCount
+{
+	echo $1 > $ul_localresdir/wallpaperhino/count
+}
+
+function setText
+{
+	echo $1 > $ul_localresdir/wallpaperhino/text
+}
+
+function getText
+{
+	echo $(cat $ul_localresdir/wallpaperhino/text)
+}
+
+function setImageFile
+{
+	echo $1 > $ul_localresdir/wallpaperhino/imageFile
+}
+
+function getImage
+{
+	echo $ul_localresdir/wallpaperhino/$(cat $ul_localresdir/wallpaperhino/imageFile)
+}
+
+if [ -z $1 ]; then
+	err
+fi
+
+if [ ! -d "$ul_localresdir/wallpaperhino" ]; then
+	mkdir $ul_localresdir/wallpaperhino
+fi
+
+if [ ! -f "$ul_localresdir/wallpaperhino/count" ]; then
+	setCount 0
+fi
+
+if [ ! -f "$ul_localresdir/wallpaperhino/text" ]; then
+	setText "forest"
+fi
+
+if [ $1 == "next" ]; then
+	setCount $(($(getCount) + 1))
+	updateImage
+elif [ $1 == "text" ]; then
+	shift
+	setText $*
+	setCount 0
+	updateImage
+elif [ $1 == "getCount" ]; then
+	getCount
+elif [ $1 == "getText" ]; then
+	getText
+else
+	err
+fi
