@@ -4,68 +4,27 @@ function updateImage
 {
 	rm $(getImage)
 
-	address="https://duckduckgo.com/?q=$(getText)&iax=1&ia=images&iaf=size%3Al&iai=$(getCount)"
+	address="https://duckduckgo.com/?q=$(getText)&iax=1&ia=images&iaf=size%3Al"
 	src=$(curl -q $address)
 	imageFile=$(echo $src | awk -F 'duckduckgo.com/i/' '{print $'$(getCount)'}' | cut -d '"' -f 1)
-	echo imageFile=$imageFile
 	setImageFile $imageFile
 	url="www.duckduckgo.com/i/$imageFile"
-	echo url=$url
-	wget $url -O $(getImage)
+	wget -q $url -O $(getImage)
 	gsettings set org.gnome.desktop.background picture-uri "file://$(getImage)"
 }
 
-function err
-{
-	echo "nope"
-	exit
-}
+function err { echo "nope"; exit; }
+function getCount { echo $(cat $ul_localresdir/wallpaperhino/count); }
+function setCount { echo $1 > $ul_localresdir/wallpaperhino/coun; }
+function setText { echo $1 > $ul_localresdir/wallpaperhino/text; }
+function getText { echo $(cat $ul_localresdir/wallpaperhino/text); }
+function setImageFile { echo $1 > $ul_localresdir/wallpaperhino/imageFile; }
+function getImage { echo $ul_localresdir/wallpaperhino/$(cat $ul_localresdir/wallpaperhino/imageFile); }
 
-function getCount
-{
-	echo $(cat $ul_localresdir/wallpaperhino/count)
-}
-
-function setCount
-{
-	echo $1 > $ul_localresdir/wallpaperhino/count
-}
-
-function setText
-{
-	echo $1 > $ul_localresdir/wallpaperhino/text
-}
-
-function getText
-{
-	echo $(cat $ul_localresdir/wallpaperhino/text)
-}
-
-function setImageFile
-{
-	echo $1 > $ul_localresdir/wallpaperhino/imageFile
-}
-
-function getImage
-{
-	echo $ul_localresdir/wallpaperhino/$(cat $ul_localresdir/wallpaperhino/imageFile)
-}
-
-if [ -z $1 ]; then
-	err
-fi
-
-if [ ! -d "$ul_localresdir/wallpaperhino" ]; then
-	mkdir $ul_localresdir/wallpaperhino
-fi
-
-if [ ! -f "$ul_localresdir/wallpaperhino/count" ]; then
-	setCount 0
-fi
-
-if [ ! -f "$ul_localresdir/wallpaperhino/text" ]; then
-	setText "forest"
-fi
+[ -z $1 ] && err
+[ ! -d "$ul_localresdir/wallpaperhino" ] && mkdir $ul_localresdir/wallpaperhino
+[ ! -f "$ul_localresdir/wallpaperhino/count" ] && setCount 0
+[ ! -f "$ul_localresdir/wallpaperhino/text" ] && setText "forest"
 
 if [ $1 == "next" ]; then
 	setCount $(($(getCount) + 1))
