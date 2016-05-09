@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "This program doesn't work properly yet"
+exit
+
 function updateImage
 {
 	rm $(getImage)
