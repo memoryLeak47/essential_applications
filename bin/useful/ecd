@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [[ $1 =~ ^\.\.\.+$ ]]; then
+	points=$1
+	#echo "match"
+	while [[ $points =~ \.\.\.+ ]]
+	do
+		points=${points/\.\.\./\.\.\/\.\.}
+		#echo $points
+	done
+	#echo $points
+else
+	points=$1
+	#echo "dont match"
+fi
+
+#echo $points
+"cd" $points
