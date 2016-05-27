@@ -1,6 +1,10 @@
 #!/bin/bash
 
+req 'pdflatex'
+req 'gnome-open'
+
 pdflatex $1
+
 if [ "$?" == "0" ]; then
 	gnome-open "./${1%.tex}.pdf"
 	exit $?
