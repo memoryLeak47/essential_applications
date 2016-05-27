@@ -3,12 +3,35 @@
 req 'pdflatex'
 req 'gnome-open'
 
-pdflatex $1
-
-if [ "$?" == "0" ]; then
-	gnome-open "./${1%.tex}.pdf"
-	exit $?
+if [ -z $1 ]; then
+	files=$(find -name "*.tex")
+	counter=0
+	for file in files
+	do
+		counter=$(($counter + 1))
+	done
+	if [ $counter == 1 ]; then
+		pdflatex $files
+		if [ "$?" == "0" ]; then
+			echo 
+			gnome-open "./${files%.tex}.pdf"
+			exit $?
+		else
+			echo "irgendwas ist schief gelaufen"
+			exit 1
+		fi
+	else
+		echo "$counter Files gefunden: $files"
+		exit 1
+	fi
 else
-	echo "irgendwas ist schief gelaufen"
-	exit 1
+	pdflatex $1
+	if [ "$?" == "0" ]; then
+		gnome-open "./${1%.tex}.pdf"
+		exit $?
+	else
+		echo "irgendwas ist schief gelaufen"
+		exit 1
+	fi
 fi
+
