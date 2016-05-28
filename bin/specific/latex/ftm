@@ -3,6 +3,12 @@
 req 'pdflatex'
 req 'gnome-open'
 
+function clearTheUnlovedFilesAway()
+{
+	rm *.log
+	rm *.aux
+}
+
 if [ -z $1 ]; then
 	files=$(find -name "*.tex")
 	counter=0
@@ -15,9 +21,11 @@ if [ -z $1 ]; then
 		if [ "$?" == "0" ]; then
 			echo 
 			gnome-open "./${files%.tex}.pdf"
+			clearTheUnlovedFilesAway
 			exit $?
 		else
 			echo "irgendwas ist schief gelaufen"
+			clearTheUnlovedFilesAway
 			exit 1
 		fi
 	else
@@ -28,10 +36,11 @@ else
 	pdflatex $1
 	if [ "$?" == "0" ]; then
 		gnome-open "./${1%.tex}.pdf"
+		clearTheUnlovedFilesAway
 		exit $?
 	else
 		echo "irgendwas ist schief gelaufen"
+		clearTheUnlovedFilesAway
 		exit 1
 	fi
 fi
-
