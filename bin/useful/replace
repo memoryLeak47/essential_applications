@@ -5,12 +5,11 @@ req 'filetype'
 usage="Usage:\treplace <a> <b> [<files>]"
 
 if [ -n "$3" ]; then
-	inputfiles=$3
+	inputfiles="$3"
 else
 	inputfiles=$(grep -s -r -l $1)
 fi
 
-files=
 for file in $inputfiles
 do
 	if [ "$(filetype $file)" == "text" ]; then
@@ -18,4 +17,4 @@ do
 	fi
 done
 
-sed -i 's/'$1'/'$2'/g' $files
+sed -i "s/$1/$2/g" $files

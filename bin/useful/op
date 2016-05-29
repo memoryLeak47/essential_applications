@@ -7,11 +7,9 @@ tmp=$(find -name "$1" -type f)
 
 for file in $tmp
 do
-	if [ $(filetype $file) == "text" ]; then
+	if [ $(filetype "$file") == "text" ]; then
 		results="$results $file"
 	fi
 done
-
-# numres=$(echo "$results" | wc -l)
 
 $ul_editor $results
