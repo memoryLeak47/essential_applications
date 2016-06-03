@@ -12,6 +12,12 @@ ulimit -c unlimited
 
 alias sl="echo 'corrected to ls'; ls"
 alias reset="tput reset"
+alias cop="cd src; completer op; cd .."
+alias d="espeak -v de 'drastisch'"
+
+echo -e '\t\t\t   .-.'
+echo -e '\t\t\t </^-^\> Hello. '
+echo -e '\t\t\t  \_ _/ '
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
