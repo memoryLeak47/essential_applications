@@ -48,13 +48,13 @@ if [ "$1" == "goto" ] || [ "$1" == "-a" ]; then
 fi
 
 
-if [ "$1" == "op" ] || [ "$1" == "-a" ] || [ "$1" == "-p" ]; then
+if [ "$1" == "op" ] || [ "$1" == "-p" ]; then
 	files=$(find -type f)
 	files=$(sed "s/.*\///g" <<< "$files")
 	complete -W "$files" op
 fi
 
-if [ "$1" == "opd" ] || [ "$1" == "-a" ] || [ "$1" == "-p" ]; then
+if [ "$1" == "opd" ] || [ "$1" == "-p" ]; then
 	files=$(find -type d)
 	files=$(sed "s/.*\///g" <<< "$files")
 	complete -W "$files" opd
